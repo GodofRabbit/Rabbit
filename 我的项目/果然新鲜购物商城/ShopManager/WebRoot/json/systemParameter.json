@@ -1,0 +1,14 @@
+{
+    "cmsName": "果然新鲜后台管理",
+    "version": "1.0.0",
+    "author": "伟大的兔神",
+    "homePage": "page/index.html",
+    "server": "windows",
+    "dataBase": "8.00.2039",
+    "maxUpload": "2M",
+    "userRights": "超级管理员",
+    "description": "这是团队努力的成果！",
+    "powerby": "copyright @2017 伟大的兔神",
+    "record": "京ICP备14040xxx号-1",
+    "keywords": "兔神，cms"
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="edu.sram.dao.UserInfoDao">
+
+<insert id="addUserInfo" parameterType="edu.sram.entity.User">
+	insert into userinfo (user_name,user_sex,user_phone,personID,user_type_role) 
+	values (#{user_name},#{user_sex},#{user_phone},#{personID},#{user_type_role})
+</insert>
+
+<select id="findUserInfoByPID" parameterType="string" resultType="edu.sram.entity.User">
+	select * from userinfo where personID = #{personID}
+</select>
+
+
+<update id="updateUserInfoType" parameterType="edu.sram.entity.User">
+	update userinfo set user_type_role = #{user_type_role} where personID = #{personID}
+</update>
+
+
+<update id="updateUserInfo" parameterType="edu.sram.entity.User">
+	update userinfo set user_name = #{user_name},user_phone=#{user_phone} where personID = #{personID}
+</update>
+
+
+
+<select id="userLiveInfo" resultType="edu.sram.entity.User" parameterType="int">
+SELECT
+	c.user_name,c.personID,c.user_sex,b.user_type_name,a.inTime,a.dayNum,a.outTime,d.room_number,a.charge,a.consume,a.remark 
+FROM
+	userrecord a
+  LEFT JOIN userinfo c 
+  ON a.user_id=c.user_id
+  LEFT JOIN usertype b 
+  ON c.user_type_id=b.user_type_id
+  LEFT JOIN roominfo d
+  ON a.room_id=d.room_id
+  LIMIT #{0},5
+</select>
+<select id="userTotalPage" resultType="int">
+	select COUNT(*) from userrecord
+</select>
+<select id="userInfo" resultType="edu.sram.entity.User">
+	SELECT user_id,user_name,user_sex,user_phone,personID,user_type_name from userinfo,usertype where userinfo.user_type_id = usertype.user_type_id
+	limit #{0},5
+</select>
+<select id="UserInfoSize" resultType="int">
+	 select count(*) from userinfo
+</select>
+</mapper>

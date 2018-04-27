@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="chat" namespace="/chat" extends="dang-default">
+		<action name="getMessage" class="com.tarena.dangdang.action.chart.GetMessageAction">
+			<result name="success" type="json">
+				<param name="root">msgs</param>
+			</result>
+		</action>
+		<action name="manage" class="com.tarena.dangdang.action.chart.ManagementAction">
+			<result name="success">/chat/management.jsp</result>
+		</action>
+		<action name="send" class="com.tarena.dangdang.action.chart.SendMessageAction">
+			<result name="success" type="json" >
+				<param name="root">ok</param>
+			</result>
+		</action>
+		
+	<!-- 将来定义用户管理模块的 -->
+	</package>
+</struts>

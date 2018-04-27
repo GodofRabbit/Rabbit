@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta charset="utf-8" />
+<title></title>
+<style type="text/css">
+table {
+	border: solid 1px #747474
+}
+
+tr {
+	border: solid 1px #747474
+}
+
+td {
+	border: solid 1px #747474
+}
+
+#table {
+	font-size: 16px;
+	font-family: 微软雅黑;
+	position: relative;
+	top: 50px;
+	left: 201px;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.tdstyle {
+	background-color: #c3e6ce
+}
+
+.text {
+	margin-left: 0px;
+	Height: 40px;
+	width: 272px;
+	border: 0px;
+	font-size: 20px;
+	font-family: 微软雅黑;
+	background-color: #e9fbee
+}
+
+.buttom {
+	background: #00AA68;
+	width: 100px;
+	height: 30px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: 微软雅黑;
+	border: 1px solid #CCCCCC;
+	border-radius: 8px;
+}
+
+body {
+	text-align: center;
+	overflow-y: hidden;
+	overflow-X: hidden;
+}
+
+.gd {
+	font-size: 14px;
+	position: relative;
+	top: 10px;
+	text-align: center;
+}
+
+#bk {
+	border: solid 2px gray;
+	border-radius: 15px;
+	width: 1170px;
+	height: 630px;
+	position: relative;
+	top: -7px;
+	background-color: #EEEEEE
+}
+
+#research {
+	height: 400px;
+	background-color: #C8F2D5;
+	width: 100%;
+	border-radius: 15px 15px 0px 0px;
+	font-size: 15px;
+	color: #343434;
+	-webkit-box-shadow: #666 0px 0px 10px;
+	-moz-box-shadow: #666 0px 0px 10px
+}
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	
+		//选定需要修改信息的用户
+		$("#check_user").click(function(){
+			var idcard = $("#user_idcard").val();
+			
+			var patt2 = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+			
+			if (!patt2.test(idcard)) {
+				alert("身份证格式错误");
+			} else {
+				$.ajax({
+					url:"http://localhost:8080/HotelManager/checkUserInfo.do",
+					data : {idcard:idcard},
+					type : "post",
+					resultType : "json",
+					success:function(result){
+					
+						$("#check_user_warning").html(result.message).css("color","red");
+						$("#user_name").val(result.data.user_name);
+						$("#user_phone").val(result.data.user_phone);
+						
+						$("#form1").data("state",result.state);
+						var a = $("#form1").data("state");
+					}
+				});
+			}
+		});
+		
+		
+		//修改信息
+		$("#sure_add").click(function(){
+			var name = $("#user_name").val();
+			
+			var phone = $("#user_phone").val();
+			
+			var idcard = $("#user_idcard").val();
+			
+			var state =$("#sure_add").parents("#form1").data("state");
+			
+			var patt1 =  /^1[34578]\d{9}$/;
+			if(state==0){
+				alert("请输入正确的身份证");
+			}else if (name.trim()==""){
+				alert("请完善资料");
+			}else if (!patt1.test(phone)) {
+				alert("手机号格式错误");
+			}else {
+				$.ajax({
+					url:"http://localhost:8080/HotelManager/updateUserInfo.do",
+					data : {name :name,phone:phone,idcard:idcard},
+					type : "post",
+					resultType : "json",
+					success:function(result){
+						alert(result.message);
+					}
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body style="text-align: center">
+	<form id="form1" runat="server">
+
+		<div id="bk" class="style2">
+
+
+
+
+			<div id="research">
+				<div id="table">
+
+					<table cellpadding="0" cellspacing="0" width="765">
+
+						<tr>
+							<td class="tdstyle" colspan="4" height="52"><span
+								style=" font-size:24px;">用户信息修改表</span>
+							</td>
+
+						</tr>
+						
+						<tr>
+							<td class="tdstyle">身份证号：</td>
+							<td>
+								<input type="text" id="user_idcard" style="width: 270px;height:37px" />
+							</td>
+							<td class="tdstyle" colspan="2">
+								<input value="选定用户" type="button" class="tdstyle" id="check_user"/>
+								<span id="check_user_warning"></span>
+							</td>
+							
+						</tr>
+						<tr>
+							
+							<td class="tdstyle" width="115">顾客姓名：</td>
+							<td width="270"><input type="text" id="user_name" style="width: 270px;height:37px" /></td>
+							<td class="tdstyle" width="115">联系方式：</td>
+							<td class="style3"><input type="text" id="user_phone" style="width: 308px;height:37px" /></td>
+							
+						</tr>
+						
+
+						
+
+
+						<tr>
+							<td width="93" style="height:101px;" class="tdstyle">备注信息：</td>
+							<td colspan="3">
+								<textarea id="text_area" style="width: 697px;height:96px;resize: none "></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="height:40px" class="tdstyle">
+								<input type="button" id="sure_add" value="提交" class="tdstyle" style="width: 50px;height:30px"/>
+							</td>
+
+
+						</tr>
+					</table>
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</form>
+</body>
+</html>

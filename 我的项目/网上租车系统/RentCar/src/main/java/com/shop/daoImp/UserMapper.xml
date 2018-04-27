@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.UserDao">
+
+<select id="findByAccount" parameterType="string" resultType="com.shop.entity.User">
+   select * from t_user where 
+   (phone REGEXP "^[1][35678][0-9]{9}$" AND phone=#{0})
+   OR (idcard REGEXP "[0-9]{18}|[0-9]{17}X|[0-9]{15}" AND idcard=#{0});
+</select>
+
+<insert id="add" parameterType="string">
+   insert into t_user (username,password,phone) values (#{0},#{1},#{2})
+</insert>
+
+</mapper>

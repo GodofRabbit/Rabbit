@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.OrderDao">
+	
+
+<select id="findt_order" parameterType="int" resultType="com.shop.entity.Order">
+	select * from t_order where t_use_id=#{t_use_id}
+</select>
+	
+</mapper>
+

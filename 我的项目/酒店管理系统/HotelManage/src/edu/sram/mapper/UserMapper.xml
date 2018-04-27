@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="edu.sram.dao.UserDao">
+
+<insert id="addUserRecord" parameterType="string">
+   insert into userrecord (room_id,inTime,dayNum,outTime,charge,consume,remark,user_id)
+   values (#{0},#{1},#{2},#{3},#{4},#{5},#{6},#{7})
+</insert>
+
+<select id="selectUser" resultType="edu.sram.entity.User">
+ SELECT a.user_id,a.user_name,a.user_sex,a.user_phone,SUM(c.consume) user_allSpend,a.personID,b.user_type_name
+     FROM userinfo a LEFT JOIN usertype b
+     ON a.user_type_id=b.user_type_id
+     LEFT JOIN userRecord c
+     ON c.user_id=a.user_id
+     WHERE a.user_id LIKE concat(concat('%',#{1}),'%') AND a.user_name LIKE concat(concat('%',#{0}),'%') AND a.user_phone LIKE concat(concat('%',#{3}),'%') AND a.personID LIKE concat(concat('%',#{2}),'%')
+     GROUP BY a.personID
+     LIMIT #{4},5
+</select>
+
+<select id="selectRoomId" parameterType="string" resultType="string">
+   SELECT room_id FROM roominfo WHERE room_number=#{0}
+</select>
+
+<select id="selectUserId" parameterType="string" resultType="string">
+   SELECT user_id FROM userinfo WHERE personID=#{0}
+</select>
+     
+<select id="selectAllUser" parameterType="string" resultType="int">
+  SELECT COUNT(d.counts)FROM(
+         SELECT COUNT(*) counts
+         FROM userinfo a 
+         LEFT JOIN usertype b
+         ON a.user_type_id=b.user_type_id
+         LEFT JOIN userRecord c
+         ON c.user_id=a.user_id
+         WHERE a.user_id LIKE concat(concat('%',#{1}),'%') AND a.user_name LIKE concat(concat('%',#{0}),'%') AND a.user_phone LIKE concat(concat('%',#{3}),'%') AND a.personID LIKE concat(concat('%',#{2}),'%')
+         GROUP BY a.personID
+         ) d
+</select>
+
+<select id="selectUserByPersonID" parameterType="string" resultType="edu.sram.entity.User">
+      select * from userinfo where personID=#{0}
+</select>
+
+<insert id="addUserInfo" parameterType="string">
+      insert into userinfo (user_name,user_sex,user_phone,personID,user_type_id)
+      values (#{0},#{1},#{2},#{3},#{4})
+</insert>
+
+<select id="allUserLiveDetail" parameterType="string" resultType="int">
+       select count(*) from userrecord a
+       INNER JOIN userinfo b
+       ON a.user_id=b.user_id 
+       where b.personID=#{0}
+</select>
+
+<select id="userLiveDetail" resultType="edu.sram.entity.User">
+        SELECT e.user_name,e.user_sex,b.user_type_name,e.user_phone,c.room_number,d.room_type_name,a.inTime,a.outTime,a.dayNum,a.charge,a.consume,a.remark
+	        FROM  userrecord a
+	        LEFT JOIN userinfo e
+	        ON a.user_id=e.user_id
+	        LEFT JOIN usertype b
+	        ON  b.user_type_id=e.user_type_id
+	        LEFT JOIN roominfo c
+	        ON a.room_id=c.room_id
+	        LEFT JOIN roomtype d
+	        ON c.room_type_id=d.room_type_id
+	        WHERE personID=#{0}
+	        LIMIT #{1},2
+</select>
+
+<select id="quitHomeSelect" resultType="edu.sram.entity.User" parameterType="string">
+      SELECT e.user_name,e.personID,e.user_sex,b.user_type_name,e.user_phone,d.room_type_name,a.inTime,a.outTime,a.dayNum,a.charge,a.consume,a.remark
+        FROM  userrecord a
+        LEFT JOIN userinfo e
+        ON e.user_id=a.user_id
+        LEFT JOIN usertype b
+        ON e.user_type_id=b.user_type_id
+        LEFT JOIN roominfo c
+        ON a.room_id=c.room_id
+        LEFT JOIN roomtype d
+        ON c.room_type_id=d.room_type_id
+        WHERE a.inTime=(SELECT MAX(a.inTime) FROM userrecord a WHERE a.room_id=(SELECT c.room_id FROM roominfo c WHERE c.room_number=#{0} AND c.room_state_id='2'))
+</select>
+
+
+</mapper>

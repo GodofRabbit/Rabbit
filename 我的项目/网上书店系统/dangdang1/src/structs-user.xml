@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="user" namespace="/user" extends="dang-default">
+		<action name="register" class="com.tarena.dangdang.action.user.RegisterAction">
+			<result name="verify">/user/verify_form.jsp</result>
+		</action>
+		<action name="code" class="com.tarena.util.CodeAction">
+		<result name="sucess" type="stream" >
+			<param name="inputName">inputStream</param></result>
+		</action>
+		
+		<action name="checkEmail" class="com.tarena.dangdang.action.user.CheckEmailAction">
+			<result name="sucess" type="json">
+				<param name="root">hasEmail</param>
+			</result>
+		</action>
+		<action name="checkCode" class="com.tarena.dangdang.action.user.CheckCodeAction">
+			<result name="sucess" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="checkVerifyCode" class="com.tarena.dangdang.action.user.CheckEmailVeryCodeAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>	
+		</action>
+		<action name="unlockAccount" class="com.tarena.dangdang.action.user.UnlockAccountAction" >
+			<result name="success">/user/register_ok.jsp</result>
+		</action>
+		<action name="checkLogin" class="com.tarena.dangdang.action.user.LoginAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="login" class="com.tarena.dangdang.action.user.LoginAction" method="login">
+			<result name="success" type="redirect">/main/main.jsp</result><!--这里要加代码 -->
+			<result name="toUnlock" >/user/verify_form.jsp</result>
+			<result name="guanli">/main/guanli.jsp</result>
+			<result name="another" type="redirect">/order/orderInfo</result>
+			<result name="comment" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="loginOut" class="com.tarena.dangdang.action.user.LoginOutAction">
+			<result name="success" type="redirect">/main/main.jsp</result>
+		</action>
+	<!-- 将来定义用户管理模块的 -->
+	</package>
+</struts>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="main" namespace="/main" extends="dang-default">
+	<action name="getNew" class="com.tarena.dangdang.action.main.NewAction">
+		<result name="success">/main/new.jsp</result>
+	</action>
+	<action name="checkEmail2" class="com.tarena.dangdang.action.user.CheckEmail">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+		<action name="searchGeorder" class="com.tarena.dangdang.action.main.GePeopleOrderAction">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success">OrderList.jsp</result>
+		</action>
+		<action name="book2" class="com.tarena.dangdang.action.main.Book2Action">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success">../main/abook.jsp</result>
+		</action>
+	<action name="updatebook" class="com.tarena.dangdang.action.main.updateBook1">
+			<result name="success">updateBook.jsp</result>
+		</action>
+		<action name="updateBoke" class="com.tarena.dangdang.action.main.updateBook2">
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">10000000</param>
+			<param name="allowedTypes">
+				image/gif,image/png,image/jpeg,image/jpg,image/pjpeg
+			</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack">
+			
+		</interceptor-ref>
+		
+		
+		<result name="success" type="chain">
+				    <param name="actionName">searchBookP</param>	
+					<param name="namespace">/main</param>
+			</result>
+		</action>
+		<action name="searchBookP" class="com.tarena.dangdang.action.main.searchBookP">
+			<result name="success" >bookList.jsp</result>
+		</action>
+		<action name="deletebook" class="com.tarena.dangdang.action.main.DeleteBook">
+			<result name="success" type="redirectAction">
+				 <param name="actionName">selectmanage</param>
+				 <param name="id">2</param>	
+				 <param name="productid">0</param>
+					<param name="namespace">/main</param>
+			</result>
+		</action>
+		<action name="searchbookpare" class="com.tarena.dangdang.action.main.searchBook">
+			<result name="success">bookList.jsp</result>
+		</action>
+		<action name="findUserMain" class="com.tarena.dangdang.action.main.FindUserB">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success">OneUser.jsp</result>
+		</action>
+		
+	<action name="newMANCategory" class="com.tarena.dangdang.action.main.GuanliyuanleftAction">
+			<result name="success">/main/category2.jsp</result>
+		</action>
+		<action name="searchDan2" class="com.tarena.dangdang.action.main.SearchDan2">
+		  <result name="success">searchdan2.jsp</result>
+		</action>
+		<action name="updateOrder1" class="com.tarena.dangdang.action.main.updateOrder1">
+			<result name="success">updateOrderInfo.jsp</result>
+		</action>
+		<action name="updateorder2" class="com.tarena.dangdang.action.main.updateOrder2">
+				<result name="success" type="chain">
+				    <param name="actionName">searchAllorder</param>	
+					<param name="namespace">/main</param>
+			</result>
+		</action>
+		<action name="selectmanage" class="com.tarena.dangdang.action.main.ManageAction">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success">guanli.jsp</result>
+			<result name="user">guanli.jsp</result>
+			<result name="dingdan">ManaDing.jsp</result>
+			<result name="usersearch">chaxunUser.jsp</result>
+			<result name="addedd">addUser.jsp</result>
+			<result name="searchDing">searchDan.jsp</result>
+			<result name="book">bookList.jsp</result>
+			<result name="searchbook">searchbookparm.jsp</result>
+			<result name="addbook">addbook1.jsp</result>
+		</action>
+			<action name="deleteorderonly" class="com.tarena.dangdang.action.main.deleteOrder">
+			<result name="success" type="chain">
+				    <param name="actionName">searchAllorder</param>	
+					<param name="namespace">/main</param>
+			</result>
+		</action>
+		<action name="searchAllorder" class="com.tarena.dangdang.action.main.GeAllOrderAction">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success">ManaDing.jsp</result>
+		</action>
+		<action name="addbook2" class="com.tarena.dangdang.action.main.addbook2">
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">10000000</param>
+			<param name="allowedTypes">
+				image/gif,image/png,image/jpeg,image/jpg,image/pjpeg
+			</param>
+		</interceptor-ref>
+		<interceptor-ref name="defaultStack">
+			
+		</interceptor-ref>
+		
+		
+		<result name="success">addbook2.jsp</result>
+		</action>
+		<action name="addbook3" class="com.tarena.dangdang.action.main.addbook3">
+			<result name="success">addbook3.jsp</result>
+		</action>
+		<action name="addbook4" class="com.tarena.dangdang.action.main.addbook4">
+			<result name="success">addbook4.jsp</result>
+		</action>
+		<action name="lastaddbook1" class="com.tarena.dangdang.action.main.lastBook1">
+			<result name="success">addbook1.jsp</result>
+		</action>
+		<action name="lastaddbook2" class="com.tarena.dangdang.action.main.lastBook2">
+			<result name="success">addbook2.jsp</result>
+		</action>
+		<action name="deleteUser" class="com.tarena.dangdang.action.main.DeleteUser">
+	
+		  <result name="success">/main/guanli.jsp</result>
+		</action>
+		<action name="updatequanxian" class="com.tarena.dangdang.action.main.UpdateQuanX">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+		  <result name="success">guanli.jsp</result>
+		</action>
+		<action name="updateUserB" class="com.tarena.dangdang.action.main.UpdateUserInFo">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+		  <result name="success">updateUser.jsp</result>
+		</action>
+			<action name="updateUser1" class="com.tarena.dangdang.action.main.UpdateUserInFo1">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+		  <result name="success">guanli.jsp</result>
+		</action>
+		<action name="selectuser" class="com.tarena.dangdang.action.main.SelectUserAction">
+	
+			<result name="success">/main/user_list.jsp</result>
+		</action>
+		<action name="selectuser1" class="com.tarena.dangdang.action.main.SelectUserAction1">
+		
+			<result name="success">/main/user_list1.jsp</result>
+		</action>
+		<action name="checkisbn" class="com.tarena.dangdang.action.main.ChackISBN">
+		<interceptor-ref name="transactionStack"></interceptor-ref>
+			<result name="success" type="json">
+				<param name="root">data</param>
+			</result>
+		</action>
+	<action name="getCats" class="com.tarena.dangdang.action.main.CategoryAction">
+		<result name="success">/main/category.jsp</result>
+	</action>
+	<action name="bookList" class="com.tarena.dangdang.action.main.BookListAction">
+		<param name="size">5</param>
+		<result name="success">/main/book_list.jsp</result>
+	</action>
+	<action name="recommend" class="com.tarena.dangdang.action.main.RecommendAction">
+		<result name="success">/main/recommend.jsp</result>
+	</action>
+	<action name="product" class="com.tarena.dangdang.action.main.ProductionAction">
+		<result name="success">/main/product.jsp</result>
+	</action>
+	<action name="addComment" class="com.tarena.dangdang.action.main.AddCommentAction">
+		<result name="success" type="json">
+			<param name="root">result</param>
+		</result>
+	</action>
+	<action name="addUserB" class="com.tarena.dangdang.action.main.addUserBB">
+		  <interceptor-ref name="transactionStack"></interceptor-ref>
+		  <result name="success">guanli.jsp</result>
+		</action>
+	<action name="comment" class="com.tarena.dangdang.action.main.GetComment">
+		<result name="success">/main/comment.jsp</result>
+	</action>
+	<action name="getHot" class="com.tarena.dangdang.action.main.HotAction">
+		<result name="success">/main/hot.jsp</result>
+	</action>
+	<action name="getRank" class="com.tarena.dangdang.action.main.RankAction">
+		<result name="success">/main/rank.jsp</result>
+	</action>
+	</package>
+</struts>

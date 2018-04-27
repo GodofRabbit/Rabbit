@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="edu.sram.dao.AdminDao">
+
+<select id="findByName" resultType="edu.sram.entity.Admin" parameterType="string">
+   select * from  admin where admin_name=#{0}
+</select>
+
+<select id="findById" parameterType="int" resultType="edu.sram.entity.Admin">
+	select * from  admin where admin_id =#{admin_id}
+</select>
+
+<update id="changePassword" parameterType="edu.sram.entity.Admin">
+	update admin set admin_password = #{admin_password} where admin_id = #{admin_id}
+</update>
+
+<select id="todayIncome" resultType="string">
+	SELECT SUM(consume)
+	FROM userrecord
+	WHERE outTime
+	BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 DAY) AND CURDATE() 
+</select>
+
+<select id="weekIncome" resultType="string">
+	SELECT SUM(consume)
+	FROM userrecord
+	WHERE outTime
+	BETWEEN DATE_SUB(CURDATE(),INTERVAL 7 DAY) AND CURDATE() 
+</select>
+
+<select id="monthIncome" resultType="string">
+	SELECT SUM(consume)
+	FROM userrecord
+	WHERE outTime
+	BETWEEN DATE_SUB(CURDATE(),INTERVAL 30 DAY) AND CURDATE() 
+</select>
+
+<select id="allIncome" resultType="string">
+	SELECT SUM(consume)
+	FROM userrecord
+	WHERE outTime &lt;= CURDATE() 
+</select>
+
+<select id="dispalyMenu" resultType="string" parameterType="string">
+       SELECT menu_name 
+       FROM menu WHERE menu_id IN
+       (SELECT menu_id FROM r_m WHERE role_id=(SELECT role_id FROM a_r WHERE admin_id=#{0}))
+</select>
+
+<select id="selectRole" resultType="int" parameterType="string">
+    SELECT role_id FROM a_r WHERE admin_id=#{0}
+</select>
+
+<select id="findByIdAndPsw" parameterType="edu.sram.entity.Admin" resultType="edu.sram.entity.Admin">
+	select * from admin where admin_id=#{admin_id} and admin_password = #{admin_password}
+</select>
+
+<update id="updateImg" parameterType="string">
+   update image set image_name=#{0} where admin_id=#{1}
+</update>
+
+<select id="dispalyImg" parameterType="string" resultType="string">
+   select image_name from image where admin_id=#{0}
+</select>
+
+</mapper>

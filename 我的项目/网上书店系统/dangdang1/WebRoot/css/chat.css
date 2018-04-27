@@ -1,0 +1,11 @@
+#chat,.submit,.send,.bar,.content,.window,.message,.#button{padding:0px;margin:0px;}
+			#chat{background:white;position:fixed;left:-350px;width:350px;height:500px;border:1px solid black;}
+			.submit{width:299px;}
+			.send{float:right;}
+			.bar{ width:299px;height:20px; background:scrollbar;}
+			.chatContent{background:white;width:297px;height:300px;border:1px lightsteelblue outset;overflow-y:auto; }
+			.window{position:absolute;left:20px;top:20px;}
+			.message{width:299px;height:100px;}
+			#button{background-image:url("../images/normal.png");height:80px;width:25px;position:absolute;right:-25px;top:170px;}
+			.chat{position:absolute;background:grey;width:350px;height:500px;border:1px solid black;}
+			

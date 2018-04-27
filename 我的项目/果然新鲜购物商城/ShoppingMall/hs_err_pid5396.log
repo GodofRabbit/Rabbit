@@ -1,0 +1,153 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000000006dc8f0e0, pid=5396, tid=6732
+#
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (11.3-b02 mixed mode windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x3ff0e0]
+#
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000004a270400):  JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=6732, stack(0x000000004a9a0000,0x000000004aaa0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x0000000000000018
+
+Registers:
+EAX=0x000000000000001c, EBX=0x0000000000000000, ECX=0x0000000000000018, EDX=0x000000000000006e
+ESP=0x000000004aa9f7d0, EBP=0x000000004a26e200, ESI=0x0000000000000018, EDI=0x000000000000006e
+EIP=0x000000006dc8f0e0, EFLAGS=0x0000000000010202
+
+Top of Stack: (sp=0x000000004aa9f7d0)
+0x000000004aa9f7d0:   000000004a270400 000000006da3a514
+0x000000004aa9f7e0:   000000004a270400 0000000000000000
+0x000000004aa9f7f0:   000000004a2705c0 000000006da4cffc
+0x000000004aa9f800:   000000004a2705c0 000000004a270400
+0x000000004aa9f810:   000000004a28e6d8 000000004a28e6d8
+0x000000004aa9f820:   000000004a26e200 0000000002601330
+0x000000004aa9f830:   0000000002601340 0000000002601718
+0x000000004aa9f840:   000000004a270400 0000000000000000
+0x000000004aa9f850:   000000004a28e6d8 000000004aa9f970
+0x000000004aa9f860:   0000000000000000 0000000000000000
+0x000000004aa9f870:   0000000000000000 0000000000000000
+0x000000004aa9f880:   0000000000000000 000000006d4c76da
+0x000000004aa9f890:   000000004aa9f918 000000004aa9f970
+0x000000004aa9f8a0:   000000004a28e6d8 000000004a2705c0
+0x000000004aa9f8b0:   000000004a2705c0 000000006d31500a
+0x000000004aa9f8c0:   0000000000000000 000000004aa9fed0 
+
+Instructions: (pc=0x000000006dc8f0e0)
+0x000000006dc8f0d0:   48 63 fa 7e 37 66 66 66 90 66 66 90 66 66 66 90
+0x000000006dc8f0e0:   42 0f b7 14 49 8d 42 ff 66 3d 7e 00 77 05 41 ff 
+
+
+Stack: [0x000000004a9a0000,0x000000004aaa0000],  sp=0x000000004aa9f7d0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x3ff0e0]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000004a291000 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=26304, stack(0x000000004aea0000,0x000000004afa0000)]
+  0x000000004a28ec00 JavaThread "CompilerThread1" daemon [_thread_blocked, id=26560, stack(0x000000004ada0000,0x000000004aea0000)]
+  0x000000004a28c400 JavaThread "CompilerThread0" daemon [_thread_blocked, id=12572, stack(0x000000004aca0000,0x000000004ada0000)]
+  0x000000004a274c00 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=25004, stack(0x000000004aba0000,0x000000004aca0000)]
+  0x000000004a271c00 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=23188, stack(0x000000004aaa0000,0x000000004aba0000)]
+=>0x000000004a270400 JavaThread "JDWP Transport Listener: dt_socket" daemon [_thread_in_vm, id=6732, stack(0x000000004a9a0000,0x000000004aaa0000)]
+  0x000000004a25f400 JavaThread "Attach Listener" daemon [_thread_blocked, id=23724, stack(0x000000004a7a0000,0x000000004a8a0000)]
+  0x0000000002615800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=24872, stack(0x000000004a6a0000,0x000000004a7a0000)]
+  0x000000000260a400 JavaThread "Finalizer" daemon [_thread_blocked, id=10084, stack(0x000000004a5a0000,0x000000004a6a0000)]
+  0x000000004a224400 JavaThread "Reference Handler" daemon [_thread_blocked, id=26584, stack(0x000000004a4a0000,0x000000004a5a0000)]
+  0x000000000058d000 JavaThread "main" [_thread_blocked, id=26144, stack(0x0000000002000000,0x0000000002100000)]
+
+Other Threads:
+  0x000000004a220400 VMThread [stack: 0x000000004a3a0000,0x000000004a4a0000] [id=4768]
+  0x000000004a292800 WatcherThread [stack: 0x000000004afa0000,0x000000004b0a0000] [id=28280]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 18816K, used 971K [0x0000000034a20000, 0x0000000035f10000, 0x0000000049a20000)
+  eden space 16192K, 6% used [0x0000000034a20000,0x0000000034b12f28,0x00000000359f0000)
+  from space 2624K, 0% used [0x0000000035c80000,0x0000000035c80000,0x0000000035f10000)
+  to   space 2624K, 0% used [0x00000000359f0000,0x00000000359f0000,0x0000000035c80000)
+ PSOldGen        total 43008K, used 0K [0x000000000aa20000, 0x000000000d420000, 0x0000000034a20000)
+  object space 43008K, 0% used [0x000000000aa20000,0x000000000aa20000,0x000000000d420000)
+ PSPermGen       total 21248K, used 3185K [0x0000000005620000, 0x0000000006ae0000, 0x000000000aa20000)
+  object space 21248K, 14% used [0x0000000005620000,0x000000000593c4e8,0x0000000006ae0000)
+
+Dynamic libraries:
+0x0000000000400000 - 0x000000000042e000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\bin\javaw.exe
+0x00007ff80ee00000 - 0x00007ff80efd1000 	C:\windows\SYSTEM32\ntdll.dll
+0x00007ff80c3f0000 - 0x00007ff80c49c000 	C:\windows\System32\KERNEL32.DLL
+0x00007ff80b910000 - 0x00007ff80bb2d000 	C:\windows\System32\KERNELBASE.dll
+0x00007ff80d3b0000 - 0x00007ff80d452000 	C:\windows\System32\ADVAPI32.dll
+0x00007ff80c250000 - 0x00007ff80c2ee000 	C:\windows\System32\msvcrt.dll
+0x00007ff80e9e0000 - 0x00007ff80ea39000 	C:\windows\System32\sechost.dll
+0x00007ff80ec30000 - 0x00007ff80ed51000 	C:\windows\System32\RPCRT4.dll
+0x00007ff80c6a0000 - 0x00007ff80c805000 	C:\windows\System32\USER32.dll
+0x00007ff80bf90000 - 0x00007ff80bfae000 	C:\windows\System32\win32u.dll
+0x00007ff80ebe0000 - 0x00007ff80ec14000 	C:\windows\System32\GDI32.dll
+0x00007ff80bc50000 - 0x00007ff80bdd2000 	C:\windows\System32\gdi32full.dll
+0x00007ff80c810000 - 0x00007ff80c83e000 	C:\windows\System32\IMM32.DLL
+0x000000006d890000 - 0x000000006de48000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\server\jvm.dll
+0x00007ff80b7d0000 - 0x00007ff80b7f3000 	C:\windows\System32\WINMM.dll
+0x00007ff80b070000 - 0x00007ff80b09b000 	C:\windows\System32\WINMMBASE.dll
+0x00007ff80b780000 - 0x00007ff80b7c2000 	C:\windows\System32\cfgmgr32.dll
+0x000000006d3b0000 - 0x000000006d3ba000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\hpi.dll
+0x00007ff80cd30000 - 0x00007ff80cd38000 	C:\windows\System32\PSAPI.DLL
+0x000000006d4c0000 - 0x000000006d4f4000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\jdwp.dll
+0x000000006d6d0000 - 0x000000006d6d8000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\npt.dll
+0x000000006d800000 - 0x000000006d80e000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\verify.dll
+0x000000006d450000 - 0x000000006d477000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\java.dll
+0x000000006d850000 - 0x000000006d862000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\zip.dll
+0x000000006d310000 - 0x000000006d319000 	D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin\dt_socket.dll
+0x00007ff80c4a0000 - 0x00007ff80c50a000 	C:\windows\System32\WS2_32.dll
+0x00007ff8082d0000 - 0x00007ff8082e6000 	C:\windows\system32\napinsp.dll
+0x00007ffffffc0000 - 0x00007ffffffda000 	C:\windows\system32\pnrpnsp.dll
+0x00007ff808cf0000 - 0x00007ff808d08000 	C:\windows\system32\NLAapi.dll
+0x00007ff80a8d0000 - 0x00007ff80a92c000 	C:\windows\System32\mswsock.dll
+0x00007ff80a690000 - 0x00007ff80a731000 	C:\windows\SYSTEM32\DNSAPI.dll
+0x00007ff80ec20000 - 0x00007ff80ec28000 	C:\windows\System32\NSI.dll
+0x00007ff80a650000 - 0x00007ff80a688000 	C:\windows\SYSTEM32\IPHLPAPI.DLL
+0x00007ff800000000 - 0x00007ff80000e000 	C:\windows\System32\winrnr.dll
+0x00007ffffffa0000 - 0x00007ffffffb5000 	C:\windows\System32\wshbth.dll
+0x00007ff8024d0000 - 0x00007ff80253a000 	C:\windows\System32\fwpuclnt.dll
+0x00007ff80af70000 - 0x00007ff80af9b000 	C:\windows\SYSTEM32\bcrypt.dll
+0x00007ffffbd70000 - 0x00007ffffbd7a000 	C:\Windows\System32\rasadhlp.dll
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:63299 -Dfile.encoding=GBK -Xbootclasspath/a:D:\Program Files\MyEclipse\Common\plugins\com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805\data\libraryset\EE_5\javaee.jar;D:\Program Files\MyEclipse\Common\plugins\com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805\data\libraryset\EE_5\jsf-impl.jar;D:\Program Files\MyEclipse\Common\plugins\com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805\data\libraryset\EE_5\jsf-api.jar;D:\Program Files\MyEclipse\Common\plugins\com.genuitec.eclipse.j2eedt.core_10.5.0.me201207171805\data\libraryset\EE_5\jstl-1.2.jar 
+java_command: edu.sram.dao.ShopCartDaoImpl
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Program Files\Java\jdk1.7.0_80
+CLASSPATH=.;D:\Program Files\Java\jdk1.7.0_80\lib;D:\Program Files\Java\jdk1.7.0_80\lib\tools.jar
+PATH=D:\Program Files\MyEclipse\Common\binary\com.sun.java.jdk.win32.x86_64_1.6.0.013\jre\bin;D:\app\Administrator\product\11.2.0\dbhome_1\bin;C:\ProgramData\Oracle\Java\javapath;.;D:\Program Files\Java\jdk1.7.0_80\bin;D:\Program Files\Java\jdk1.7.0_80\jre\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\nodejs\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.2 Build 9200 
+
+CPU:total 4 (8 cores per cpu, 2 threads per core) family 6 model 5 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, ht
+
+Memory: 4k page, physical 4120940k(1106484k free), swap 8112636k(3160716k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (11.3-b02) for windows-amd64 JRE (1.6.0_13-b03), built on Mar  9 2009 10:50:19 by "java_re" with MS VC++ 8.0
+
+time: Mon Oct 30 09:26:35 2017
+elapsed time: 162 seconds
+

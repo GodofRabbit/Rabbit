@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.UserDao">
+
+<select id="findByAccount" parameterType="string" resultType="com.shop.entity.User">
+   select * from t_user where username=#{0}
+</select>
+
+<select id="checkPhone" parameterType="string" resultType="com.shop.entity.User">
+   select * from t_user where phone=#{0}
+</select>
+
+<select id="checkInfo" parameterType="string" resultType="com.shop.entity.User">
+   select * from t_user where username=#{0} and phone=#{1}
+</select>
+
+<select id="BackAdminDisplay" parameterType="int" resultType="com.shop.entity.User">
+   select * from t_user a
+    left join t_user_role b
+    on a.id=b.user_id
+    where b.role_id=#{1}
+   limit #{0},4
+</select>
+
+<select id="allAdminNum" parameterType="int" resultType="int">
+   select count(*) from t_user a
+   left join t_user_role b
+   on a.id=b.user_id
+   where b.role_id=#{0}
+</select>
+
+<insert id="add" parameterType="string">
+   insert into t_user (realname,phone,username,password,jointime) values (#{0},#{1},#{2},#{3},now())
+</insert>
+
+<insert id="addRole" parameterType="string">
+   insert into t_user_role (user_id,role_id) values (#{0},1)
+</insert>
+
+<select id="searchRole" parameterType="string" resultType="string">
+   SELECT a.role_name FROM t_role a
+    LEFT JOIN t_user_role b
+	ON a.role_id=b.role_id
+	LEFT JOIN t_user c
+	ON c.id=b.user_id
+	WHERE c.username=#{0}
+</select>
+
+<delete id="delAdmin_role" parameterType="int">
+    delete from t_user_role where user_id=#{0} and role_id=2
+</delete>
+
+<delete id="delAdmin" parameterType="int">
+     delete from t_user where id=#{0}
+</delete>
+
+<insert id="addAdmin_role" parameterType="int">
+   insert into t_user_role (user_id,role_id) values (#{0},#{1})
+</insert>
+
+<select id="searchUser" resultType="com.shop.entity.User">
+	select * from t_user a
+	left join t_user_role b
+	on a.id=b.user_id
+	where b.role_id=#{2} and
+	 (a.username like binary concat(concat('%',#{1}),'%') or a.realname LIKE concat(concat('%',#{1}),'%') or a.phone LIKE concat(concat('%',#{1}),'%')
+	or a.jointime LIKE concat(concat('%',#{1}),'%') )
+	limit #{0},4 
+</select>
+
+<select id="allSearchUserNum" resultType="int">
+	select count(*) from t_user a
+	left join t_user_role b
+	on a.id=b.user_id
+	where b.role_id=#{1} and
+	 (a.username like binary concat(concat('%',#{0}),'%') or a.realname LIKE concat(concat('%',#{0}),'%') or a.phone LIKE concat(concat('%',#{0}),'%')
+	or a.jointime LIKE concat(concat('%',#{0}),'%') )
+</select>
+
+<select id="BackOrderDisplay" parameterType="int" resultType="com.shop.entity.Order">
+    SELECT order_id,orderseq,conname,conphone,provinces,citys,countys,street,order_time,delivery_time,order_state,order_message 
+    FROM t_order a
+    LEFT JOIN t_address b
+    ON a.address_id=b.address_id
+    limit #{0},4
+</select>
+
+<select id="allOrderNum" resultType="int">
+   select count(*) from t_order
+</select>
+
+<select id="searchOrder" resultType="com.shop.entity.Order">
+    SELECT order_id,orderseq,conname,conphone,provinces,citys,countys,street,order_time,delivery_time,order_state,order_message 
+    FROM t_order a
+    LEFT JOIN t_address b
+    ON a.address_id=b.address_id
+    where orderseq LIKE concat(concat('%',#{1}),'%') or conname LIKE concat(concat('%',#{1}),'%')
+     or conphone LIKE concat(concat('%',#{1}),'%')  or provinces LIKE concat(concat('%',#{1}),'%')
+     or citys LIKE concat(concat('%',#{1}),'%')  or countys LIKE concat(concat('%',#{1}),'%')
+     or street LIKE concat(concat('%',#{1}),'%')  or order_time LIKE concat(concat('%',#{1}),'%')
+     or delivery_time LIKE concat(concat('%',#{1}),'%')  or order_state LIKE concat(concat('%',#{1}),'%')
+    limit #{0},4
+</select>
+
+<select id="allSearchOrderNum" parameterType="String" resultType="int">
+   SELECT count(*)
+    FROM t_order a
+    LEFT JOIN t_address b
+    ON a.address_id=b.address_id
+    where orderseq LIKE concat(concat('%',#{1}),'%') or conname LIKE concat(concat('%',#{1}),'%')
+     or conphone LIKE concat(concat('%',#{1}),'%')  or provinces LIKE concat(concat('%',#{1}),'%')
+     or citys LIKE concat(concat('%',#{1}),'%')  or countys LIKE concat(concat('%',#{1}),'%')
+     or street LIKE concat(concat('%',#{1}),'%')  or order_time LIKE concat(concat('%',#{1}),'%')
+     or delivery_time LIKE concat(concat('%',#{1}),'%')  or order_state LIKE concat(concat('%',#{1}),'%')
+</select>
+
+<select id="orderDatail" parameterType="int" resultType="com.shop.entity.ShopCart" >
+   select goods_imageurl,goodsname,goods_num,goodsprice from t_order_goods a
+   left join t_goods b
+	on a.goods_id=b.id
+	WHERE a.order_id=#{0}
+</select>
+
+<update id="changePwd">
+    update t_user set password=#{0} where id=#{1}
+</update>
+
+<select id="loadMyOrder" parameterType="int" resultType="com.shop.entity.Order">
+    SELECT order_id,orderseq,conname,conphone,provinces,citys,countys,street,order_time,delivery_time,order_state,order_message 
+    FROM t_order a
+    LEFT JOIN t_address b
+    ON a.address_id=b.address_id
+    where a.user_id=#{0}
+</select>
+
+<update id="udos">
+   update t_order set order_state=#{1} where order_id=#{0}
+</update>
+
+</mapper>

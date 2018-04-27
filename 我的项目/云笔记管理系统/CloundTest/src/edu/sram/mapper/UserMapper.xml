@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="edu.sram.dao.UserDao">
+
+<select id="findByName" resultType="edu.sram.entity.User" parameterType="string">
+   select * from cn_user where cn_user_name=#{cn_user_name}
+</select>
+
+
+<insert id="addUser" parameterType="string">
+   insert into cn_user (cn_user_id,cn_user_name,cn_user_password) values (#{cn_user_id},#{cn_user_name},#{cn_user_password})
+</insert>
+
+<select id="checkPassword" resultType="edu.sram.entity.User" parameterType="string">
+   select * from cn_user where cn_user_id=#{cn_user_id}
+</select>
+
+
+<update id="changePassword" parameterType="string">
+   update cn_user set cn_user_password=#{1} where cn_user_id=#{0}
+</update>
+
+</mapper>

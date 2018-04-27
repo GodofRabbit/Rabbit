@@ -1,0 +1,54 @@
+package com.shop.controller;
+
+import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.shop.dao.UserInformationDao;
+import com.shop.entity.Coupon;
+import com.shop.entity.User;
+import com.shop.service.CouponService;
+
+@Controller
+public class CouponController {
+
+	@Autowired
+	CouponService couponService;
+	@Autowired
+	UserInformationDao userInformationDao;
+	@RequestMapping("CouponFindAll.do")
+	public String findAll(HttpServletRequest request){
+//		Cookie[] cookies = request.getCookies();
+//		if(cookies != null){
+//		    for(Cookie cookie : cookies) {
+//		        if(cookie.getName().equals("user_id")) {
+//		        	String user_id = cookie.getValue();
+//		        	User user = userInformationDao.findOneById(Integer.parseInt(user_id));
+//					request.setAttribute("user",user);
+//		         }
+//		     }
+//		}
+		String user_id = request.getParameter("user_id");
+		if(user_id!=null){
+			User user = userInformationDao.findOneById(Integer.parseInt(user_id));
+			request.setAttribute("user",user);
+		}
+		List<Coupon> list = couponService.findAll();
+		request.setAttribute("couponlist",list);
+		return "index";
+	}
+	
+	@RequestMapping("couponDetails.do")
+	public String couponDetails(HttpServletRequest request){
+		 int id = Integer.parseInt(request.getParameter("cid"));
+		 Coupon coupon = couponService.findCouponById(id);
+		 request.setAttribute("coupon", coupon);
+		 return "frontpage/couponDetails";
+	}
+	
+}

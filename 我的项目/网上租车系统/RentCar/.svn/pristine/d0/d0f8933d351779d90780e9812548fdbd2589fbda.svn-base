@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.UserCouponDao">
+
+	<insert id="addUserCoupon" parameterType="com.shop.entity.UserCoupon">
+		insert into t_user_coupon (id,coupon_id,user_id,createtime,state) values
+		(#{id},#{coupon_id},#{user_id},#{createtime},#{state})
+	</insert>
+
+	<select id="findCidsByUid" parameterType="int" resultType="int">
+		select coupon_id from t_user_coupon where user_id = #{user_id}
+	</select>
+
+	<select id="findOrderByUid" parameterType="int"
+		resultType="com.shop.entity.Order">
+		select * from t_order where t_user_id = #{user_id}
+	</select>
+	
+	<select id="findUserCouponByUid" parameterType="int" resultType="com.shop.entity.UserCoupon">
+		select * from t_user_coupon where user_id = #{user_id}
+	</select>
+	
+	<update id="updateUserCouponState" parameterType="int">
+	    update t_user_coupon set state=3 where id=#{id}
+	</update>
+</mapper>

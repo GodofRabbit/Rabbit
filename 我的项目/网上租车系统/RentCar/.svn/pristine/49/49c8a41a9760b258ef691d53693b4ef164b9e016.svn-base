@@ -1,0 +1,89 @@
+package com.shop.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+	/*
+	 *在下列属性中，确认订单时对于Rtime，ARent，damage，LateFee是不需要进行赋值的。这三个属性是在归还车时进行设置。
+	 *但在查询所以订单消息时，以下所有属性都应该显示在页面上 
+	 ***/
+public class Order implements Serializable{
+	private int id;	//编号
+	private int t_user_id; //会员编号
+	private int t_brand_id; //品牌编号
+	private int t_cartype_id; //类型编号
+	private Date bTime; //起租日期
+	private Date eTime; //应还日期
+	private double rent; //租金
+	private Date rRime; //归还日期
+	private double aRent; //实付租金
+	private double damage; //损坏赔偿金
+	private double lateFee; //与其违约金
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getT_user_id() {
+		return t_user_id;
+	}
+	public void setT_user_id(int t_user_id) {
+		this.t_user_id = t_user_id;
+	}
+	public int getT_brand_id() {
+		return t_brand_id;
+	}
+	public void setT_brand_id(int t_brand_id) {
+		this.t_brand_id = t_brand_id;
+	}
+	public int getT_cartype_id() {
+		return t_cartype_id;
+	}
+	public void setT_cartype_id(int t_cartype_id) {
+		this.t_cartype_id = t_cartype_id;
+	}
+	public Date getbTime() {
+		return bTime;
+	}
+	public void setbTime(Date bTime) {
+		this.bTime = bTime;
+	}
+	public Date geteTime() {
+		return eTime;
+	}
+	public void seteTime(Date eTime) {
+		this.eTime = eTime;
+	}
+	public double getRent() {
+		return rent;
+	}
+	public void setRent(double rent) {
+		this.rent = rent;
+	}
+	public Date getrRime() {
+		return rRime;
+	}
+	public void setrRime(Date rRime) {
+		this.rRime = rRime;
+	}
+	public double getaRent() {
+		return aRent;
+	}
+	public void setaRent(double aRent) {
+		this.aRent = aRent;
+	}
+	public double getDamage() {
+		return damage;
+	}
+	public void setDamage(double damage) {
+		this.damage = damage;
+	}
+	public double getLateFee() {
+		return lateFee;
+	}
+	public void setLateFee(double lateFee) {
+		this.lateFee = lateFee;
+	}
+	
+
+}

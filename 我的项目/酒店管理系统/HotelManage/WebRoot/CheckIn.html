@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base target=_self /></base>
+<title></title>
+
+<style type="text/css">
+table{border:solid 1px #747474}
+tr{border:solid 1px #747474}
+td{border:solid 1px #747474}
+#table{ font-size:16px; font-family:微软雅黑; position:relative; top:50px; left:201px;border-radius:15px 15px 0px 0px;}
+.tdstyle{ background-color:#c3e6ce}
+.text{margin-left: 0px;Height:40px; width:272px; border:0px; font-size:20px; font-family:微软雅黑; background-color:#e9fbee; color:Black; border-style:none}
+.buttom{ background:#00AA68;  width:100px;  height:30px; cursor:pointer;font-size:20px; font-family:微软雅黑; border:1px solid #CCCCCC;border-radius:8px;}
+body{text-align:center; overflow-y:hidden;overflow-X:hidden;}
+.gd{font-size:14px; position:relative; top:10px;text-align: center;}
+#bk{ border: solid 2px gray;border-radius:15px; width:1100px ; height:625px; position:relative;top:-7px; background-color:#EEEEEE}
+#research{ height:625px; background-color:#C8F2D5; width:100%;border-radius:15px 15px 0px 0px; font-size:15px; color:#343434;-webkit-box-shadow:#666 0px 0px 10px;-moz-box-shadow:#666 0px 0px 10px}
+.error{ color:Red; font-size:18px; position:relative; right:200px;  font-family:微软雅黑}
+.text1{margin-left: 0px;Height:40px; width:272px; border:0px; font-size:20px; font-family:微软雅黑; background-color:#e9fbee; color:Black; border-style:none; background-image:url("images/checkdate.png"); background-repeat:no-repeat; background-position:234px 5px }
+
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/User.js"></script>
+</head>
+<body style="text-align: center" onload="startClock()">
+    <form id="form1">
+
+    <div id="bk" class="style2">
+
+
+
+
+<div id="research">
+    <div id="table">
+
+      <table  cellpadding="0" cellspacing="0" width="765">
+
+      <tr>
+  <td   class="tdstyle" colspan="4" height="52"><span style=" font-size:24px;">用户入住信息登记表</span></td>
+
+</tr>
+
+<tr>
+  <td class="tdstyle"  width="115" >顾客姓名：</td>
+  <td width="270" contentEditable="true" id="userName">
+      
+    </td>
+  <td width="115"  class="tdstyle">身份证号：</td>
+  <td width="270" height="40"  contentEditable="true" id="personID" onblur="checkPersonID();" onfocus="changePersonIDColor();">
+    </td>
+</tr>
+<tr>
+  <td  class="tdstyle">联系方式：</td>
+  <td class="style3" contentEditable="true" id="phone" onblur="checkPhone();" onfocus="changePhoneColor();">
+     
+    </td>
+  <td  class="tdstyle">房间类型：</td>
+  <td height="37">
+       <select name="roomRole" id="roomType" onchange="reset1();">
+           <option value="220">普通单人间(220/天)</option>
+           <option value="280">豪华单人间(280/天)</option>
+           <option value="380">普通双人间(380/天)</option>
+           <option value="480">豪华双人间(480/天)</option>
+           <option value="580">贵宾套房(580/天)</option>
+           <option value="1280">总统套房(1280/天)</option>
+      </select>
+    </td>
+</tr>
+<tr>
+  <td  class="tdstyle">顾客性别：</td>
+  <td class="style3">
+         <select name="userSex" style="width: 70px" id="userSex">
+           <option value="男">男</option>
+           <option value="女">女</option>
+      </select>
+    </td>
+  <td  class="tdstyle">房间编号：</td>
+  <td height="37" contentEditable="true" id="roomNum">
+     
+      
+    </td>
+</tr>
+<tr>
+  <td   class="tdstyle">入住时间：</td>
+  <td id="clock">
+    </td>
+  <td   class="tdstyle">入住天数：</td>
+  <td height="37" contentEditable="true" id="days" onkeyup="addDaysAndPrice();"></td>
+</tr>
+
+<tr>
+  <td   class="tdstyle">到期时间：</td>
+  <td id="end">
+    </td>
+  <td   class="tdstyle">顾客等级：</td>
+  <td height="37">
+        <select name="userRole" id="userRole">
+           <option value="1">普通会员</option>
+           <option value="2">高级会员</option>
+           <option value="3">黄金会员</option>
+           <option value="4">钻石会员</option>
+      </select>
+    </td>
+</tr>
+
+<tr>
+  <td   class="tdstyle">交付押金：</td>
+  <td id="cash" contentEditable="true">
+    </td>
+  <td  class="tdstyle">预算消费：</td>
+  <td height="37" id="allPrice">
+     
+    </td>
+</tr>
+
+
+<tr>
+  <td width="93" style="height:101px;"  class="tdstyle">备注信息：</td>
+  <td colspan="3"  contentEditable="true" id="remark" onfocus="changeRemark1();" onblur="changeRemark2();">
+     暂无
+    </td>
+  </tr>
+  <tr>
+  <td colspan="4" style="height:40px"   class="tdstyle">
+      <input type="button" onclick="checkAfterAddUserRecord();" value="提交" class="buttom"/>
+      &nbsp;
+ <input type="button" onclick="javascript:window.history.go(-1);"value="返回" class="buttom"/>
+      </td>
+
+
+</tr>
+</table>
+
+    </div>
+
+
+</div>
+
+    </div>
+   
+    </form>
+</body>
+</html>

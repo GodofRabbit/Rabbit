@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+    <title></title>
+    	<script type = "text/javascript" src = "js/jquery.min.js"></script>
+	<script type = "text/javascript" src = "js/navigation.js"></script>
+	<script type = "text/javascript" src = "js/navigationT.js"></script>
+	<link rel = "stylesheet" type = "text/css" href = "css/navigation.css"></link>
+	<link rel = "stylesheet" type = "text/css" href = "css/navigationT.css"></link>
+	<link rel = "stylesheet" type = "text/css" href = "css/style.css"></link>
+
+<style type="text/css">
+    
+ body{ margin:0px; padding:0px; overflow-y:hidden;overflow-X:hidden;}
+ #admininfo{height:134px; width:250px}
+ .touxiang{ width:80px; height:80px ; border: white 2px solid ;border-radius:100px;}
+ #adminmenu{ position:relative;left:100px; bottom:150px;width: 409px;}
+.style1{ text-align: center; }
+.admin1{ font-size:18px; font-family:微软雅黑; color:White;}
+.admin11{ position:relative; bottom:7px; font-size:18px; font-family:微软雅黑; color:White;}
+#touxiang{ width:100px; height:125px; position:relative; top:10px; left:10px}
+.button{border-radius:7px; border:white solid  2px; width:50px; height:26px; background-color:#00AA68; font-size:16px; font-family:微软雅黑; color:White;cursor:pointer; }
+.button1{border-radius:7px; border:white solid  0px; width:50px; height:26px; background-color:#00AA68; font-size:16px; font-family:微软雅黑; color:White;cursor:pointer; position:relative; top:20px; background-color:transparent}
+#jclogo{ position: relative;left:20px;top:8px}
+#home{  position: absolute;left:500px;top:25px;  height:110px; width:700px;}
+.metro_na a{border-radius:15px; border: solid 0px white}
+ul{ position:relative; top:-10px;}
+img{cursor:pointer;}
+span{ font-family:微软雅黑; color:white}
+#btt{ position:absolute; top:120px; left:80px}
+
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/cookie_util.js"></script>
+<script type="text/javascript" src="js/top.js"></script>
+<script type="text/javascript">
+    $(function(){
+          var adminName=getCookie("aname");
+           $("#bb").text(adminName);
+           //注销
+           $("#button_logout").click(logoff);
+           //切换用户
+           $("#button_changeuser").click(changeAdmin);
+           
+    });
+</script>
+</head>
+<body onload="dispalyImg();">
+<!--     <form id="form1" runat="server"> -->
+    <div style=" background-image:url(images/topbg.png); background-repeat:no-repeat; background-size:100% 100% ;-webkit-box-shadow:#666 0px 0px 10px;-moz-box-shadow:#666 0px 0px 10px">
+    <div id="admininfo">
+    <div id="touxiang" class="style1">
+    
+    <!-- 头像的上传更换 -->
+    <form id="uploadForm" >
+    <a onclick="addImage();"><img id="updateImg" alt="" src="" class="touxiang" /></a><br/>
+    <input type="file" name="file" id="image" style="display:none;"  onchange="fileUpload();"/>  
+    </form>
+   
+   
+    <span style=" font-family:微软雅黑; font-size:15px; color:white">当前用户</span>
+    <br/><b id="bb"></b>
+    </div>
+
+    <div id="adminmenu" class="style1">
+    <span class="admin1">后台管理</span><br/><br/>
+  
+       <div id="btt">
+      &nbsp;&nbsp;
+         
+        <input id="button_logout" type="button" value="注销"  class="button" />
+        &nbsp;&nbsp;
+        
+        <input id="button_changeuser" type="button" value="切换" class="button" />
+        &nbsp;&nbsp;
+        
+        
+        <a href="ChangePwd.html" target="right"><input id="button_changer_password" type="button" value="改密" class="button"/></a>
+        &nbsp;&nbsp;
+       
+      
+       </div><img src="images/JClogo.bmp"id="jclogo" />
+
+ <div id="home">
+ 
+
+	<div class= "metro_na">
+		<div class= "nav_title"><span style=" font-family:微软雅黑;color:white">快捷导航</span></div>
+		
+		<ul style=" position:relative; top:-10px">
+			<li>
+				<a href = "Right.html" target="right"><img src = "images/icon_home.png"/><span>欢迎页面</span></a>
+			</li>
+		
+
+		
+			<li>
+				<a href = "#"><img src = "images/ruzhuguanli.png"/><span style=" font-family:微软雅黑;color:white">入住管理</span></a>
+				<ul>
+					<li><a href = "CheckIn.html" target="right"><img src = "images/ruzhudengji.png"/><span>入住登记</span></a></li>
+					<li><a target="right"><img src = "images/shenqingtuifang.png"/><span>客房预订</span></a></li>
+					<li><a href="LiveMark.html" target="right"><img src = "images/yudingguanli.png"/><span>入住查询</span></a></li>
+					<li><a href="ReserveMark.html" target="right"><img src = "images/chaxunkongfang.png"/><span>预订管理</span></a></li>
+
+
+				</ul>
+			</li>
+			
+			<li>
+				<a href = "#"><img src = "images/icon_gallery.png"/><span>信息查询</span></a>
+				<ul>
+					<li><a href = "UserInfo.html" target="right"><img src = "images/gukexinxi.png"/><span>顾客信息</span></a></li>
+					<li><a href = "UserLiveInfo.html" target="right"><img src = "images/ruzhuxinxi.png"/><span>入住信息</span></a></li>
+					<li><a href="ReserveMark.html" target="right"><img src = "images/fangjianxinxi.png"/><span>预约信息</span></a></li>
+					
+
+
+				</ul>
+			</li>
+
+			<li>
+				<a href = "#"><img src = "images/icon_apps.png"/><span>顾客管理</span></a>
+				<ul>
+					<li><a href="GuestReg.html" target="right"><img src = "images/xinzengguke.png"/><span>新增顾客</span></a></li>
+					<li><a href="GuestMan.html" target="right"><img src = "images/fangjianzhuangtai.png"/><span>顾客升级</span></a></li>
+					<li><a href="GuestInfo.html" target="right"><img src = "images/xinxixiugai.png"/><span>信息修改</span></a></li>
+				
+
+
+				</ul>
+			</li>
+
+            			<li>
+				<a><img src = "images/icon_settings.png"/><span style="color:white">系统设置</span></a>
+				
+				<ul>
+					<li><a href = "ChangePwd.html" target="right"><img src = "images/xiugaimima.png"/><span>修改密码</span></a></li>
+                                        <li><a href="AboutProject.html" target="right"><img src = "images/gukeleixing.png"/><span>关于系统</span></a></li>
+                    <li><a href="AboutUs.html" target="right"><img src = "images/fenggeguanli.png"/><span>关于我们</span></a></li>
+					<li><a href = "" onclick="quit()"><img src = "images/tuichuxitong.png"/><span>退出系统</span></a></li>
+				</ul>
+				
+			</li>
+			
+		
+		</ul>
+	</div>
+ 
+ 
+ </div>
+
+    </div>
+   
+
+    </div>
+    </div>
+<!--  </form> -->
+</body>
+</html>

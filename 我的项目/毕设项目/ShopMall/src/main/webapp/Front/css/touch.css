@@ -1,0 +1,102 @@
+
+.message{
+    float: left;
+    margin-left: 50px;
+    margin-top: 30px;
+    width: 940px;
+    height: 448px;
+}
+.siteFormMiddle{
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+.g_itext{
+    float: left;
+   width: 30.099999999999998%;
+    height: 34px;
+    padding-left: 10px;
+
+}
+.star {
+    font-family: 微软雅黑;
+    width: 1%;
+    float: left;
+    vertical-align: middle;
+    font-size: 14px;
+    color: red;
+    line-height: 40px;
+    margin-left: 2.5%;
+}
+.resize {
+    margin-left: 0;
+    height: 36px;
+    width: 93.3%;
+    _width: 90.3%;
+    float: left;
+    line-height: 36px;
+    padding: 6px 0;
+    border-radius: 2px;
+    border: 1px solid #8F8F8F;
+    color: #8C8C8C;
+    border-color: #DADADA;
+    font-size: 12px;
+}
+.g_textarea {
+    width: 93%;
+    _width: 90%;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    border-color: #DADADA;
+    border-radius: 2px;
+    font-size: 12px;
+    float: left;
+    max-height: 200px;
+    border: 1px solid #8F8F8F;
+}
+textarea {
+    -webkit-appearance: textarea;
+    background-color: white;
+    border: 1px solid;
+    border-image: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    -webkit-box-orient: vertical;
+    cursor: auto;
+    padding: 2px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.siteFormItemCheckItem_N_U {
+    margin-right: 28px;
+    margin-bottom: 5px;
+    line-height: 15px;
+    vertical-align: middle;
+    float: left;
+}
+.siteFormItemCheckItem_N_U input {
+    height: 15px;
+    line-height: 15px;
+    vertical-align: middle;
+    margin: 0 3px 0 0;
+}
+input[type="radio"] {
+    -webkit-appearance: radio;
+    box-sizing: border-box;
+}
+.s_ibutton {
+    min-width: 140px;
+    width: 247px;
+    height: 48px;
+    line-height: 44px;
+    background: url("../images/button.jpg") no-repeat;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+
+}
+.middle{
+    color: white;
+}
+/*建议结束*/

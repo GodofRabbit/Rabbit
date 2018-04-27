@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script src="Scripts/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/homeDetail.js"></script>
+<script type="text/javascript">
+    $(document).ready
+       (
+
+         function () {
+             var divcss = { background: 'white', height: '630px' };
+             var txtcss = { background: 'transparent' };
+             var bt = { display: 'none' };
+           
+             $("#Button6").bind("click", function () {
+                 $("#research").css(divcss);
+                 $(".text").css(txtcss);
+                 $("#TextBox7").css(txtcss);
+                 $("td").css(txtcss);
+                 $(".buttom").css(bt);
+                 window.print();
+
+
+             });
+
+         }
+       );
+
+</script>
+
+<style type="text/css">
+table{border:solid 1px #747474}
+tr{border:solid 1px #747474}
+td{border:solid 1px #747474}
+#table{ font-size:16px; font-family:微软雅黑; position:relative; top:50px; left:201px;border-radius:15px 15px 0px 0px;}
+.tdstyle{ background-color:#c3e6ce}
+.text{margin-left: 0px;Height:40px; width:272px; border:0px; font-size:20px; font-family:微软雅黑; background-color:#e9fbee}
+.buttom{ background:#00AA68;  width:100px;  height:30px; cursor:pointer;font-size:20px; font-family:微软雅黑; border:1px solid #CCCCCC;border-radius:8px;}
+body{text-align:center; overflow-y:hidden;overflow-X:hidden;}
+.gd{font-size:14px; position:relative; top:10px;text-align: center;}
+#bk{ border: solid 2px gray;border-radius:15px; width:1100px ; height:625px; position:relative;top:-7px; background-color:#EEEEEE}
+#research{ height:625px; background-color:#C8F2D5; width:100%;border-radius:15px 15px 0px 0px; font-size:15px; color:#343434;-webkit-box-shadow:#666 0px 0px 10px;-moz-box-shadow:#666 0px 0px 10px}
+
+    .style1
+    {
+        background-color: #c3e6ce;
+        width: 150px;
+    }
+    .style2
+    {
+        background-color: #c3e6ce;
+        height: 101px;
+        width: 150px;
+    }
+
+</style>
+
+</head>
+<body style="text-align: center" onload="selectHomeDetail();">
+    <form id="form1">
+
+    <div id="bk" class="style2">
+
+    <!-- $("#Button1").bind("click", function () { window.top.location = "index.html"; alert('退房成功！房间状态已更新为打扫状态，请尽快打扫。'); });-->
+
+
+<div id="research">
+    <div id="table">
+    
+      <table  cellpadding="0" cellspacing="0" width="805">
+
+                  <tr>
+  <td   class="tdstyle" colspan="4" height="52"><span style=" font-size:24px;">用户住房详情表
+  
+  </span></td>
+
+  
+
+</tr>
+
+
+<tr>
+  <td class="style1" >房间编号：</td>
+  <td width="270"  id="room_number">
+     
+    </td>
+  <td width="130"  class="tdstyle">房间类型：</td>
+  <td width="270" height="40" id="room_type_name">
+     
+    </td>
+</tr>
+<tr>
+  <td  class="style1">顾客姓名：</td>
+  <td class="style3" id="user_name">
+      
+    </td>
+  <td  class="tdstyle">身份证号：</td>
+  <td height="37" id="personID">
+      
+    </td>
+</tr>
+<tr>
+  <td  class="style1">顾客性别：</td>
+  <td class="style3" id="user_sex">
+      
+    </td>
+  <td  class="tdstyle">联系方式：</td>
+  <td height="37" id="user_phone">
+      
+    </td>
+</tr>
+<tr>
+  <td  class="style1">顾客等级：</td>
+  <td class="style3" id="user_type_name">
+      
+    </td>
+  <td  class="tdstyle">入住时间：</td>
+  <td height="37" id="inTime">
+      
+    </td>
+</tr>
+<tr>
+  <td  class="style1">入住天数：</td>
+  <td class="style3" id="dayNum">
+      
+    </td>
+  <td  class="tdstyle">登记离开时间：</td>
+  <td height="37" id="outTime">
+      
+    </td>
+</tr>
+<tr>
+  <td  height="37" class="style1">交付押金：</td>
+  <td id="charge">
+      
+    </td>
+ <td   class="style1"></td>
+  <td>
+      
+    </td>
+</tr>
+
+<tr>
+  <td  class="style2">住房说明：</td>
+  <td colspan="3" id="remark">
+      暂无
+    </td>
+  </tr>
+  <tr>
+  <td colspan="4" style="height:40px"   class="tdstyle">
+      <input type="button" onclick="javascript:history.back();"value="返回" class="buttom"/>
+      </td>
+
+
+</tr>
+</table>
+    </div>
+
+
+</div>
+
+    </div>
+   
+    </form>
+</body>
+</html>

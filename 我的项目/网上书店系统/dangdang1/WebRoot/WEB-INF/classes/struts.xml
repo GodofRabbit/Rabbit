@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<!-- 加载各个模块的配置文件 -->
+<include file="structs-user.xml"/>
+<include file="structs-order.xml"/>
+<include file="structs-cart.xml"/>
+<include file="structs-main.xml"/>
+<include file="structs-chart.xml"/>
+<include file="structs-search.xml"/>
+<!--异常处理  --><!-- 还必须定义全局result -->
+<!-- 定义工程底层的package -->
+	<package name="dang-default" extends="json-default">
+	<interceptors>
+		<interceptor name="transaction"  class="com.tarena.dangdang.interceptor.TransactionInterceptor"/>
+		<interceptor-stack name="transactionStack">
+			<interceptor-ref name="transaction"/>
+			<interceptor-ref name="defaultStack"/>	
+		</interceptor-stack>
+	</interceptors><!-- 将 所有的action都可以默认调用它（包括子包）-->
+	<default-interceptor-ref name="transactionStack"/>
+	<!-- 定义一些共同的拦截器或者action定义 -->
+	<action name="getSearchOption" class="com.tarena.service.SearchOptionAction">
+	<result name="success" type="json">
+		<param name="root">opts</param>
+	</result>
+	</action>
+	
+	</package>
+</struts>
+<!-- <global-results>
+		<result name="error">/error.jsp</result>
+	</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception">
+		</exception-mapping>
+	</global-exception-mappings> -->

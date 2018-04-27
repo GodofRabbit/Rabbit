@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+    <title></title>
+    <style type="text/css">
+body{text-align:center;overflow-X:hidden;}
+.gd{font-size:14px; position:relative; top:10px;text-align: center;}
+#bk{ border: solid 2px gray;border-radius:15px; width:1115px ; height:625px; position:relative;top:0px; background-color:#EEEEEE}
+#research{ height:100px; background-color:#C8F2D5; width:100%;border-radius:15px 15px 0px 0px; font-size:15px; color:#343434;-webkit-box-shadow:#666 0px 0px 10px;-moz-box-shadow:#666 0px 0px 10px}
+.buttom{ background:#00AA68;  width:100px;  height:30px; cursor:pointer;font-size:15px; font-family:微软雅黑; border:1px solid #CCCCCC;border-radius:8px;}
+    </style>
+<link rel="stylesheet" href="css/layui.css" type="text/css"></link>
+<script type="text/javascript" src="js/layui.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/userLiveDetail.js"></script>
+</head>
+<body onload="userLiveDetail();">
+	<input id="page" type="hidden" value="1"/>
+    <form id="form1" >
+    <div id="bk">
+    <div id="research">
+        <div >
+         <font style="font-size: 25px"><b> 顾客入住详细信息</b></font>
+        <br />
+        <br/>
+        <font style="font-size: 20px"> 
+	         <font color="green" ><b>姓名：</b></font><span id="user_name"></span>  &nbsp;&nbsp;&nbsp;&nbsp;   
+	         <font color="green"><b>性别：</b></font> <span id="user_sex"></span> &nbsp;&nbsp;&nbsp;&nbsp;    
+	         <font color="green"><b>会员等级：</b></font><span id="user_type_name"></span>&nbsp;&nbsp;&nbsp;&nbsp;      
+	         <font color="green"><b>身份证号码：</b></font><span id="personID"></span>&nbsp;&nbsp;&nbsp;&nbsp;  
+	         <font color="green"><b>TEL:</b></font><span id="user_phone"></span>
+         </font>
+         
+        </div>
+        </div>
+<table class="layui-table" >
+  <thead>
+    <tr style="background-color:#C8F2D5;">
+      <th style="text-align: center;"><b>编号</b></th>
+      <th style="text-align: center;"><b>房间编号</b></th>
+      <th style="text-align: center;"><b>房间类型</b></th>
+      <th style="text-align: center;"><b>入住时间</b></th>
+      <th style="text-align: center;"><b>离开时间</b></th>
+      <th style="text-align: center;"><b>入住天数</b></th>
+      <th style="text-align: center;"><b>缴纳押金</b></th>
+      <th style="text-align: center;"><b>消费金额</b></th>
+      <th style="text-align: center;"><b>备注信息</b></th>
+    </tr>
+  </thead>
+  <tbody id="boody_tr">
+	     
+  </tbody>
+  
+</table>
+	第&nbsp;&nbsp;<span id="currentPage">1</span>&nbsp;&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" onclick="lastPage();"value="上一页" />&nbsp;&nbsp;&nbsp;&nbsp;
+ <input type="button" onclick="nextPage();"value="下一页" />&nbsp;&nbsp;&nbsp;&nbsp;
+           共&nbsp;&nbsp;<span id="totalPage"></span>&nbsp;&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       共&nbsp;&nbsp;<span id="totalRecord"></span>&nbsp;&nbsp;条记录  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+       <input type="button" onclick="javascript:history.go(-1);"value="返回" class="buttom"/> 
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,118 @@
+
+function to_order(){
+	$("#orderlist_rent_car").css("display","block");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_bonus_points(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","block");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_coupon(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","block");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_information(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","block");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+	
+	$.ajax({
+		url:"getInformation.do",
+		data:{uid:uid},
+		type:"post",
+		resultType:"json",
+		success:function(result){
+			alert();
+		}
+	});
+}
+
+
+function to_rank(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","block");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_password(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","block");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_rules(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","block");//会员章程
+	$("#member_bylaws").css("display","none");//会员细则
+}
+
+
+function to_bylaws(){
+	$("#orderlist_rent_car").css("display","none");//自驾订单
+	$("#my_coupon").css("display","none");//优惠券
+	$("#my_bonus_points").css("display","none");//我的积分
+	$("#my_information").css("display","none");//我的信息
+	$("#my_rank").css("display","none");//我的等级
+	$("#my_password").css("display","none");//登录密码
+	$("#member_rules").css("display","none");//会员章程
+	$("#member_bylaws").css("display","block");//会员细则
+}
+
+function to_jsp(){
+	$.ajax({
+		url:"getInformation.do",
+		data:{uid:uid},
+		type:"post",
+		resultType:"json",
+		success:function(result){
+			$("#jsp_name").html(result.data.realname);
+		}
+	});
+	to_order();
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="cart" namespace="/cart" extends="dang-default">
+		<action name="buy" class="com.tarena.dangdang.action.cart.BuyAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="list" class="com.tarena.dangdang.action.cart.CartAction">
+		<result name="success">/cart/cart_list.jsp</result>
+		</action>
+		<action name="del" class="com.tarena.dangdang.action.cart.CartAction" method="del">
+		<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="recover" class="com.tarena.dangdang.action.cart.CartAction" method="recover">
+		<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="update" class="com.tarena.dangdang.action.cart.CartAction" 
+		method="update">
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="clearAll" class="com.tarena.dangdang.action.cart.CartAction"
+		method="clearAll">
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="deleteAll" class="com.tarena.dangdang.action.cart.CartAction"
+		method="deleteAll">
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="realDelete" class="com.tarena.dangdang.action.cart.CartAction"
+		method="realDelete" >
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="recoverAll" class="com.tarena.dangdang.action.cart.CartAction"
+		method="recoverAll" >
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="isLogin" class="com.tarena.dangdang.action.cart.CheckLoginAction">
+			<result name="success" type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.shop.dao.CarDao">
+    <select id="getAddress" resultType="com.shop.entity.Address" parameterType="string">
+     select * from t_address where address like #{0}
+     </select>
+     
+   <select id="findCar" resultType="com.shop.entity.Car" parameterType="int">
+		select * from t_car where id=#{id}
+   </select>
+   
+  <select id="findBrand" resultType="com.shop.entity.Brand" parameterType="int">
+		select brandname,country from t_brand where id=#{id}; 
+   </select>
+   
+   <select id="findType" resultType="string" parameterType="int">
+		select typename from t_cartype where id=#{id}; 
+   </select> 
+   
+   <select id="findSamePrice" resultType="com.shop.entity.Car" parameterType="com.shop.entity.Car">
+		select * from t_car where price=#{price} and id!=#{id} ; 
+   </select> 
+   
+   <select id="getCars" resultType="com.shop.entity.Car" parameterType="com.shop.entity.SearchCar">
+    select * from t_car   
+        <trim prefix="where" prefixOverrides="AND|OR">
+        
+        <if test="type_conditions!=null">
+        type_id in
+         <foreach collection="type_conditions" item="i" open="(" close=")" separator=",">
+         #{i}
+         </foreach>               
+        </if>
+        
+        <if test="title_conditions!=null">
+        and brand_id in
+        <foreach collection="title_conditions" item="i" open="(" close=")" separator=",">
+        #{i}
+        </foreach>
+        </if>
+        
+        <if test="price_conditions!=null">
+        and
+        <foreach collection="price_conditions" item="i" open="(" close=")" separator="or">
+           <if test="i==1">
+            price between 0 and 150           
+           </if>    
+           <if test="i==2">
+            price between 150 and 300           
+           </if>  
+           <if test="i==3">
+            price between 300 and 500             
+           </if>  
+           <if test="i==4">
+           price > 500           
+           </if>        
+        </foreach>      
+        </if>     
+        </trim>
+     </select>
+     
+</mapper>

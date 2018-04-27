@@ -1,0 +1,34 @@
+package com.shop.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.shop.entity.Coupon;
+import com.shop.service.CouponService;
+
+@Controller
+public class CouponController {
+
+	@Autowired
+	CouponService couponService;
+	@RequestMapping("CouponFindAll.do")
+	public String findAll(HttpServletRequest request){
+		List<Coupon> list = couponService.findAll();
+		request.setAttribute("couponlist",list);
+		return "index";
+	}
+	
+	@RequestMapping("couponDetails.do")
+	public String couponDetails(HttpServletRequest request){
+		 int id = Integer.parseInt(request.getParameter("cid"));
+		 Coupon coupon = couponService.findCouponById(id);
+		 request.setAttribute("coupon", coupon);
+		 return "frontpage/couponDetails";
+	}
+	
+}

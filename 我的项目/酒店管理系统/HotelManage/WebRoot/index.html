@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta charset="utf-8"/>
+    <title></title>
+<style type="text/css">
+body{ margin:0px; width:100%;overflow-X:hidden; scrolling:no;}
+#top{width:100%;height:140px; scrolling:no; }
+#left{position:relative;top:0px;height:650px; width:230px;}
+#right{ width:1230px; height:650px; scrolling:auto; position:absolute;top:147px; left:230px ;overflow: hidden}
+.button{ border-style: none;border-color: inherit;border-width: 0px;background: #00AA68;border-radius:5px; width:90px; height:29px; font-family:微软雅黑; color:White; font-size:18px;cursor:pointer;  }
+.button1{border-radius:7px; border:white solid  2px; width:50px; height:26px; background-color:#00AA68; font-size:16px; font-family:微软雅黑; color:White;cursor:pointer; position:relative; top:20px}
+.text{margin-left: 0px;Height:32px; width:250px; border: solid 2px #00AA68; font-size:20px; font-family:微软雅黑; background-color:#e9fbee}
+.black_overlay{display: none;position: absolute;top: 0%;left: 0%;width: 100%;height: 100%;background-color: black;z-index:1001;-moz-opacity: 0.8;opacity:.80;filter: alpha(opacity=80);}
+.white_content{border-radius:15px ;display: none;position: absolute;top: 40%;left: 32%;width: 35%;height:218px;border: 10px solid #00AA68;background-color: white;z-index:1002;overflow: auto; text-align:center}
+.white_content_small {border-radius:15px; display: none;position: absolute;top: 20%;left: 30%;width: 40%;height: 50%;border: 10px solid #00AA68;background-color: white;z-index:1002;overflow: auto;}
+
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/right.js"></script>
+<script type="text/javascript" src="js/cookie_util.js"></script>
+<script type="text/javascript">
+         var aid = getCookie("aid");
+	     if(aid==null){
+	         window.location.href="OPLogin.html";
+	     }
+</script>
+
+<script type="text/javascript">
+    //弹出隐藏层
+    function ShowDiv(show_div, bg_div) {
+           $("#Text1").val("");
+//         var Opname='<%=Session["opname"] %>';
+//         if (Opname != "") { 
+//         document.getElementById("compareIframe").src = "ChangeSession.html?sd=1"; 
+//         } 
+
+        document.getElementById(show_div).style.display = 'block';
+        document.getElementById(bg_div).style.display = 'block';
+        var bgdiv = document.getElementById(bg_div);
+        bgdiv.style.width = document.body.scrollWidth;      
+        $("#" + bg_div).height($(document).height());
+    };
+    
+    $(function(){
+    	$("#Text1").keydown(function(event){
+	    	var down = event.keyCode;
+			var aid = getCookie("aid");
+			var psw = $("#Text1").val();
+			if(down == 13){
+				if(psw.trim()==""){
+					alert("密码不能为空");
+				}else{
+					$.ajax({
+						url:"deblocking.do",
+						data:{aid:aid,psw:psw},
+						type:"post",
+						resultType:"json",
+						success:function(result){
+							if(result.state==0){
+								alert(result.message);
+							}else {
+								CloseDiv('MyDiv','fade');
+							}
+						}
+					});
+				}
+			}
+	    });
+    });
+    
+    
+    
+//     关闭弹出层
+    function CloseDiv(show_div, bg_div) {
+              document.getElementById(show_div).style.display = 'none';
+              document.getElementById(bg_div).style.display = 'none';
+    };
+</script>	     
+</head>
+<body onload="displayRoom();">    
+
+
+    <form id="form1"> 
+   	<input type="text" style="display:none"/>
+     <input id="Bt" type="button" value="锁定" onclick="ShowDiv('MyDiv','fade')" style="border-radius:7px; border:white solid  2px; width:50px; height:26px; background-color:#00AA68; font-size:16px; font-family:微软雅黑; color:White;cursor:pointer; position: absolute; top:95px; left:388px" />  
+    <div>
+    <div style=" height:146px">
+    <frame name="index">
+     <iframe  src="Top.html" id="top"  frameborder="0" ></iframe>
+    </div> 
+ <iframe  src="Left.html" name="left"   id="left" frameborder="0" ></iframe>
+ <iframe  src="Right.html" name="right" id="right"  frameborder="0"></iframe>
+</frame>
+<iframe id="compareIframe" src="" style=" width:0px; height:0px ; border:0px "></iframe>
+   
+    </div>
+
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="white_content" dir="ltr">
+   <br /> <img src="images/sd.jpg" /><br>
+ <br>
+    <span style=" font-size:23px;  font-style:inherit;color:#00aa68; font-family:微软雅黑">&nbsp;密码：&nbsp;</span><input id="Text1" type="password" class="text"/> 
+   </br>
+</div>
+<div style="height: 67px; background-color:#00aa68 ;  background:rgba(0,0,0,0.1);text-align:center; font-family:微软雅黑; color:gray; font-size:13px; position:relative; top:20px;">
+<p style=" position:relative; top:-1px"><br/>Copyright © 荆楚酒店管理系统 All Rights Reserved 山西思软有限公司JAVA 1707(2)班<br />
+    tel:15735104464&nbsp;&nbsp;&nbsp;qq:1287882196&nbsp;&nbsp;&nbsp;email:believe_rl.163com</p>
+
+</div>
+
+
+
+    </form>
+    
+ 
+
+   
+</body>
+</html>

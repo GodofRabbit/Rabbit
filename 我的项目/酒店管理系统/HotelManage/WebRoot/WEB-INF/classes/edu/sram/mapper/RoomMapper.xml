@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="edu.sram.dao.RoomDao">
+
+<select id="EmptyRoomList" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3
+   limit #{0},5       
+</select>
+
+<select id="selectAllEmptyRoom" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3
+</select>
+
+
+<select id="normalSingleRoom" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=1
+   limit #{0},5       
+</select>
+
+<select id="AllNormalSingleRoom" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=1
+</select>
+
+
+<select id="deluxeSingleRoom" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=2
+   limit #{0},5       
+</select>
+
+<select id="AllDeluxeSingleRoom" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=2
+</select>
+
+
+<select id="normalDoubleRoom" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=3
+   limit #{0},5       
+</select>
+
+<select id="AllNormalDoubleRoom" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=3
+</select>
+
+
+<select id="deluxeDoubleRoom" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=4
+   limit #{0},5       
+</select>
+
+<select id="AllDeluxeDoubleRoom" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=4
+</select>
+
+
+<select id="vipSuite" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=5
+   limit #{0},5       
+</select>
+
+<select id="AllVipSuite" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=5
+</select>
+
+<select id="presideSuite" resultType="edu.sram.entity.Room">
+   select room_number,room_type_price,room_type_name from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=6
+   limit #{0},5       
+</select>
+
+<select id="AllPresideSuite" resultType="int">
+   select count(*) from roominfo a
+   LEFT JOIN roomtype b
+   ON a.room_type_id=b.room_type_id
+   LEFT JOIN roomstate c
+   ON a.room_state_id=c.room_state_id
+   WHERE c.room_state_id=3 and a.room_type_id=6
+</select>
+
+<update id="changeRoomState" parameterType="string">
+    update roominfo set room_state_id=2 where room_id=#{0}
+</update>
+
+<update id="updateUserRecord" parameterType="string">
+    update userrecord set dayNum=#{0},outTime=#{1},consume=#{2} where inTime=#{3}
+</update>
+
+<update id="updateRoomState" parameterType="string">
+    update roominfo set room_state_id=3 where room_number=#{0}
+</update>
+
+<select id="allRoomState" resultType="string">
+     select room_state_id from roominfo 
+</select>
+
+<select id="clickRoom" resultType="edu.sram.entity.Room" parameterType="string">
+    SELECT a.room_number,b.room_type_name,b.room_type_price
+	 FROM roominfo a
+	INNER JOIN roomtype b
+	ON a.room_type_id=b.room_type_id
+	WHERE a.room_id=#{0}
+</select>
+
+<select id="selectHomeDetail" resultType="edu.sram.entity.User" parameterType="string">
+       SELECT c.room_number,e.user_name,e.personID,e.user_sex,b.user_type_name,e.user_phone,d.room_type_name,a.inTime,a.outTime,a.dayNum,a.charge,a.remark
+        FROM  userrecord a
+        LEFT JOIN userinfo e
+        ON e.user_id=a.user_id
+        LEFT JOIN usertype b
+        ON e.user_type_id=b.user_type_id
+        LEFT JOIN roominfo c
+        ON a.room_id=c.room_id
+        LEFT JOIN roomtype d
+        ON c.room_type_id=d.room_type_id
+        WHERE a.inTime=(SELECT MAX(a.inTime) FROM userrecord a WHERE a.room_id=(SELECT c.room_id FROM roominfo c WHERE c.room_id=#{0} AND c.room_state_id='2'))
+</select>
+
+</mapper>

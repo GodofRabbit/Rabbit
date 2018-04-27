@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+	<mvc:annotation-driven enable-matrix-variables="true"/>
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	<property name="messageConverters">
+		<list>
+			<!--json转换器-->
+			<ref bean="mappingJacksonHttpMessageConverter" />
+		</list>
+	</property>
+</bean>
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
+	<property name="messageConverters">  
+        <list>  
+               <ref bean="mappingJacksonHttpMessageConverter" />  
+        </list>  
+    </property>  
+</bean>  
+	        
+	<bean id="mappingJacksonHttpMessageConverter"  
+	    class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+	     <property name = "supportedMediaTypes">  
+			  <list>  
+			    <bean class="org.springframework.http.MediaType">  
+			     <constructor-arg index="0" value="text"/>  
+			     <constructor-arg index="1" value="plain"/>  
+			     <constructor-arg index="2" value="UTF-8"/>  
+			    </bean>  
+			    <bean class="org.springframework.http.MediaType">  
+			     <constructor-arg index="0" value="*"/>  
+			     <constructor-arg index="1" value="*"/>  
+			     <constructor-arg index="2" value="UTF-8"/>  
+			    </bean>  
+			    <bean class="org.springframework.http.MediaType">  
+			     <constructor-arg index="0" value="text"/>  
+			     <constructor-arg index="1" value="*"/>  
+			     <constructor-arg index="2" value="UTF-8"/>  
+			    </bean>  
+			     <bean class="org.springframework.http.MediaType">  
+			     <constructor-arg index="0" value="application"/>  
+			     <constructor-arg index="1" value="json"/>  
+			     <constructor-arg index="2" value="UTF-8"/>  
+			    </bean>  
+			  </list>  
+		</property>  
+	</bean>   
+	
+	
+	<!-- 扫描 controller-->
+	<context:component-scan base-package="com.shop.controller" />
+	<!-- 定义跳转的文件的前后缀 ，视图模式配置-->
+	<bean id="viewResolver"
+	    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	    <property name="viewClass"
+	        value="org.springframework.web.servlet.view.JstlView" />
+	    <property name="prefix" value="/" />
+	    <property name="suffix" value=".jsp" />
+	</bean> 
+	<!-- 上传下载 -->
+	<bean id="multipartResolver"
+	    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="maxUploadSize" value="104857600" />
+	</bean>
+	
+	<!-- 开启Shiro的注解(如@RequiresRoles，@RequiresPermissions) start，需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证   -->
+	<bean
+	    class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+	    depends-on="lifecycleBeanPostProcessor">
+	    <property name="proxyTargetClass" value="true" />
+	</bean>
+	<!-- 开启Shiro的注解end -->
+	
+</beans>

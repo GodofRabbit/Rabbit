@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+<meta charset="utf-8"/>
+    <title></title>
+    <style type="text/css">
+body{text-align:center; overflow-y:hidden;overflow-X:hidden; font-family:微软雅黑}
+.gd{font-size:14px; position:relative; top:10px;text-align: center;}
+#bk{ border: solid 2px gray;border-radius:15px; width:1100px ; height:625px; position:relative;top:-7px; background-color:#EEEEEE}
+#research{ height:625px; background-color:#C8F2D5; width:100%;border-radius:15px 15px 0px 0px; font-size:15px; color:#343434;-webkit-box-shadow:#666 0px 0px 10px;-moz-box-shadow:#666 0px 0px 10px}
+.bt{ width:170px; height:22px}
+.button{ border-style:none;background:#00AA68;  width:272px;  height:40px; position:relative;left:119px;cursor:pointer;font-size:20px; font-family:微软雅黑;top: 0px;}
+.style1{text-align: left; position:relative; left:300px; font-size:22px}
+ .style2{text-align: right;}
+ .button{border-radius:7px; border:white solid  2px; width:50px; height:26px; background-color:#00AA68; font-size:16px; font-family:微软雅黑; color:White;cursor:pointer; }
+ .text{margin-left: 0px;Height:40px; width:272px; font-size:20px; font-family:微软雅黑; background-color:#e9fbee; color:Black; border-style:none; border:solid 2px #00aa68;}
+.buttom{ background:#00AA68;  width:100px;  height:30px; cursor:pointer;font-size:20px; font-family:微软雅黑; border:1px solid #CCCCCC;border-radius:8px;}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/cookie_util.js"></script>
+
+<script type="text/javascript">
+		
+		var aid = getCookie("aid");
+		var aname = getCookie("aname");
+		
+		$(function(){
+		
+		$("#old_psw").blur(function(){
+		   var oldpassword = $(this).val();
+           $.ajax({
+                 type:"post",
+                 resultType:"json",
+                 url:"checkOldPsw.do",
+                 data:{aid:aid,oldpassword:oldpassword},
+                 success:function(result){
+                     if(result.state==1){
+                        $("#warning_1").html("原密码正确").css("color","green");
+                     }
+                     if(result.state==0){
+                     $("#warning_1").html("原密码错误").css("color","red");
+                     }
+                     if(result.state==2){
+                     $("#warning_1").html("原密码不能为空").css("color","red");
+                     }
+                 }
+           });
+		});
+		
+        $("#now_user").html(aname);
+			$("#sure_change").click(function(){
+				
+				$("#warning_1").html("");
+				$("#warning_2").html("");
+				$("#warning_3").html("");
+		
+				
+				var old_psw= $("#old_psw").val();
+				var new_psw= $("#new_psw").val();
+				var final_psw = $("#final_psw").val();
+		
+				if (old_psw == "") {
+					$("#warning_1").html("原密码不能为空").css("color","red");
+					$("#warning_1").show();
+				} else if (new_psw == "") {
+					$("#warning_2").html("新密码不能为空").css("color","red");
+					$("#warning_2").show();
+				} else if (final_psw != new_psw){
+					$("#warning_3").html("两次密码不一致").css("color","red");
+					$("#warning_3").show();
+				} else {
+					$.ajax({
+						url : "http://localhost:8080/HotelManage/changePassword.do",
+						data : {
+							aid:aid,
+							old_psw : old_psw,
+							new_psw : new_psw
+						},
+						type : "post",
+						resultType : "json",
+						success : function(result) {
+							
+							if (result.state == 1) {
+								$("#result_msg").html(result.message).css("color","green");
+								setTimeout(function() {
+								    delCookie("aid");
+									parent.location.href = "OPLogin.html";
+								}, 1000);
+							} 
+							if(result.state == 0 ){
+								$("#warning_1").html(result.message).css("color","red");
+								$("#warning_1").show();
+							}
+						}
+					});
+				}
+			});
+		});
+</script>
+</head>
+<body>
+    <div id="bk" class="style2">
+
+
+    <div id="research">
+        <br />
+        <br />
+        <br />
+        <div class="style1">
+        当前操作员：<span id="now_user"></span>
+        &nbsp;&nbsp;
+            <br />
+            <br />
+            &nbsp;原&nbsp;&nbsp; 密&nbsp;&nbsp; 码：<input id="old_psw" type="password"/><span id="warning_1"></span>
+        <br /><br />
+            &nbsp;新&nbsp;&nbsp; 密&nbsp;&nbsp; 码：<input id="new_psw" type="password"/><span id="warning_2"></span>
+        &nbsp;&nbsp;
+            <br />
+            <br />
+            确认新密码：<input id="final_psw" type="password"/><span id="warning_3"></span>
+        <br /><br />
+        &nbsp; <input type="button" value="确认" class="buttom" id="sure_change"/><span id="result_msg"></span>
+        <input type="button" value="取消" class="buttom" onclick="javascript:history.go(-1);"/>
+        </div>
+        <br />
+        </div>
+    
+
+    
+    </div>
+</body>
+</html>
