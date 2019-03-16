@@ -1,0 +1,1 @@
+<template name="103cdc14"><view class="_view data-v-0dccd7b0"><image src="../../static/images/common/back_top.png" wx:if="{{show}}" bindtap="handleProxy" data-eventid="{{'103cdc14-0'}}" data-comkey="{{$k}}" class="_image data-v-0dccd7b0"></image></view></template>

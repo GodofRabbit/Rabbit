@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
+            document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"demo","entryPagePath":"pages/index/index.html","page":{"pages/index/index.html":{"window":{"navigationBarTitleText":"首页","titleNView":{"buttons":[{"text":"","color":"#FF6354","fontSize":"14","float":"left","width":"auto"},{"type":"none","colorPressed":"#FF5242","float":"right","fontSrc":"static/iconfont/iconfont-tongzhi.ttf","text":"","fontSize":"18px","badgeText":""}]}}},"pages/stats/stats.html":{"window":{"navigationBarTitleText":"统计分析"}},"pages/mine/personCenter.html":{"window":{"navigationBarTitleText":"个人中心","titleNView":{"type":"transparent"}}},"pages/mine/login.html":{"window":{"navigationBarTitleText":"","titleNView":{"type":"transparent"}}},"pages/stats/income.html":{"window":{"navigationBarTitleText":"预期收益统计"}},"pages/stats/incomeAnalysis.html":{"window":{"navigationBarTitleText":"投资分布统计"}},"pages/stats/investment.html":{"window":{"navigationBarTitleText":"投资分析报表"}},"pages/stats/maturityIncome.html":{"window":{"navigationBarTitleText":"到期收益统计"}},"pages/error/error.html":{"window":{"navigationBarTitleText":"","navigationBarBackgroundColor":"#efeff4"}},"pages/error/errordesc.html":{"window":{"navigationBarTitleText":"","navigationBarBackgroundColor":"#efeff4"}},"pages/index/investList.html":{"window":{"navigationBarTitleText":"投资概况"}},"pages/index/investDetail.html":{"window":{"navigationBarTitleText":"详细信息"}},"pages/mine/userInfo.html":{"window":{"navigationBarTitleText":"个人资料"}},"pages/mine/passwordChange.html":{"window":{"navigationBarTitleText":"密码修改"}},"pages/mine/setting.html":{"window":{"navigationBarTitleText":"设置"}},"pages/process/approvalDetail.html":{"window":{"navigationBarTitleText":""}},"pages/index/infoList.html":{"window":{"navigationBarTitleText":"我的消息","enablePullDownRefresh":true}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"uni-app","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8"}},"tabBar":{"color":"#7A7E83","selectedColor":"#FF5242","backgroundColor":"#ffffff","borderStyle":"black","list":[{"pagePath":"pages/index/index.html","iconPath":"static/images/tabbar/icon_home.png","selectedIconPath":"static/images/tabbar/icon_home_red.png","text":"首页"},{"pagePath":"pages/process/approvalIndex.html","iconPath":"static/images/tabbar/iocn_statistics.png","selectedIconPath":"static/images/tabbar/iocn_statistics_red.png","text":"审批"},{"pagePath":"pages/stats/stats.html","iconPath":"static/images/tabbar/icon_approve.png","selectedIconPath":"static/images/tabbar/icon_approve_red.png","text":"统计"},{"pagePath":"pages/mine/personCenter.html","iconPath":"static/images/tabbar/icon_mine.png","selectedIconPath":"static/images/tabbar/icon_mine_red.png","text":"我的"}],"position":"bottom"},"networkTimeout":{"request":100000,"connectSocket":100000,"uploadFile":100000,"downloadFile":100000},"platform":"devtools","pages":["pages/index/index","pages/stats/stats","pages/mine/personCenter","pages/mine/login","pages/stats/income","pages/stats/incomeAnalysis","pages/stats/investment","pages/stats/maturityIncome","pages/error/error","pages/error/errordesc","pages/index/investList","pages/index/investDetail","pages/mine/userInfo","pages/mine/passwordChange","pages/mine/setting","pages/process/approvalDetail","pages/index/infoList","pages/process/approvalIndex","pages/process/approvalIndex"],"subPackages":[],"usingComponents":{},"nvue":{"pages":{"pages/process/approvalIndex.html":{"window":{"navigationBarTitleText":"业务审批"}}}},"splashscreen":{"autoclose":true}}
+
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+            };
+
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

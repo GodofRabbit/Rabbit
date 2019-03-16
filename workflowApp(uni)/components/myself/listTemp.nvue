@@ -1,0 +1,113 @@
+<!-- 审批列表组件 -->
+<template>
+	<view>
+		<view class="list-cell">
+			<view class="media-list">
+				<view class="media-title">
+			{{ data.pasType }}<!-- <text class="number">{{ data.bizPkNo }}</text> -->
+				</view>
+				<view class="media-foot">
+					<view class="media-info">
+						<text class="info-text people">发起人:{{ data.regName }}</text>
+						<text class="info-text">发起时间:{{ data.createDate }}</text>
+					</view>
+				</view>
+				<button class="approval-btn" @click="goDetail()"><text class="approval-text">{{ approvalType }}</text></button>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default{
+		props: {
+		    data: {
+		        type: Object,
+		        default: function(e) {
+		            return {}
+		        }
+		    },
+			genre: {
+				type: Object,
+				default: function(e) {
+				    return {}
+				}
+			}
+		},
+		computed:{
+			approvalType(){
+				return this.genre==0?'去审批':'查看';
+			}
+		},
+		methods:{
+			goDetail(){
+				uni.navigateTo({
+					url:'./approvalDetail?genre='+this.genre+'&pasType='+this.data.pasType+'&pasMinNo='+this.data.pasMinNo+'&regName='+this.data.regName+'&createDate='+this.data.createDate+'&bizPkNo='+this.data.bizPkNo
+				})
+			}
+		}
+	}
+</script>
+	
+<style scoped>
+	.number {
+		color: #FFA299;
+		font-size: 25px;
+		margin-top: 50px;
+		margin-left: 30px;
+	}
+	.list-cell {
+	    width: 750px;
+	}
+	.media-list {
+	    border-bottom-width: 1px;
+	    border-bottom-style: solid;
+	    border-bottom-color: #c8c7cc;
+	}
+	.media-title {
+		flex-direction: row;
+	    text-overflow: ellipsis;
+	    font-size: 32px;
+	    color: #555555;
+		height: 90px;
+	}
+	.media-info {
+	    flex-direction: row;
+	}
+	.people {
+		width: 180px;
+	}
+	.info-text {
+	    color: #999999;
+	    font-size: 28px;
+		margin-right: 60px;
+	}
+	
+	.media-foot {
+	    margin-top: 10px;
+		margin-bottom: 30px;
+		margin-left: 40px;
+	}
+	.approval-btn {
+		width: 140px;
+		height: 60px;
+		padding-top: 10px;
+		border-style: solid;/* weex只支持这么写 */
+		border-color: #FFA07A;
+		border-width: 2px;
+		background-color: #FFE4E1;
+		border-radius: 30px;
+		position: absolute;
+		top: 60%;
+		right: 35%;
+		opacity: 1;
+	}
+	.approval-btn:active {
+		opacity: 0.5;
+	}
+	.approval-text {
+		font-size: 30px;
+		text-align: center;
+		color: orangered;
+	}
+</style>

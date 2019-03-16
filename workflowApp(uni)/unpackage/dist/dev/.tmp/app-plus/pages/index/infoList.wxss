@@ -1,0 +1,101 @@
+
+.m-item.data-v-39e936ac {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	padding-top: 40rpx;
+	margin-top: 15rpx;
+}
+.m-left.data-v-39e936ac {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 120rpx;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+}
+.m-content.data-v-39e936ac {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-flex: 2;
+	-webkit-flex: 2;
+	    -ms-flex: 2;
+	        flex: 2;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	word-break: break-all;
+}
+.head_icon.data-v-39e936ac {
+	width: 80rpx;
+	height: 80rpx;
+}
+.m-content-head.data-v-39e936ac {
+	position: relative;
+}
+.m-content-head-home.data-v-39e936ac {
+	text-align: left;
+	background: #FF6354;
+	border: 1px #FF6354 solid;
+	border-radius: 20rpx;
+	padding: 20rpx;
+	color: white;
+	width: 500rpx;
+}
+.m-content-head-home.data-v-39e936ac:before {
+	border: 15rpx solid transparent;
+	border-right: 15rpx solid #FF6354;
+	left: -26rpx;
+	width: 0;
+	height: 0;
+	position: absolute;
+	content: ' '
+}
+.m-content-head-grhome.data-v-39e936ac {
+	text-align: left;
+	background: #009688;
+	border: 1px #009688 solid;
+	border-radius: 20rpx;
+	padding: 20rpx;
+	color: white;
+	width: 500rpx;
+}
+.m-content-head-grhome.data-v-39e936ac:before {
+	border: 15rpx solid transparent;
+	border-right: 15rpx solid #009688;
+	left: -26rpx;
+	width: 0;
+	height: 0;
+	position: absolute;
+	content: ' '
+}
+.content-hover.data-v-39e936ac {
+	opacity: 0.6;
+}
+.time.data-v-39e936ac {
+	color: gray;
+	text-align: center;
+	margin-left: 35%;
+}
+

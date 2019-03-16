@@ -1,0 +1,5 @@
+<import src="/components/simple-pro/dialog-loading.vue.wxml" />
+<import src="/components/simple-pro/customModal.vue.wxml" />
+
+<template name="data-v-98bc9b1a-default-203eae42-1"><view class="_view data-v-98bc9b1a bg-img"><image src="../../static/images/common/update_new.jpeg" style="height: 200px;" class="_image data-v-98bc9b1a is-response"></image></view></template>
+

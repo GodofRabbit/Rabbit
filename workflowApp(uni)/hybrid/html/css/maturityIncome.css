@@ -1,0 +1,27 @@
+@charset "utf-8";
+a {
+	color:gray;
+}
+#chart1,#chart2 {
+	width: 100%;
+	height:250px;
+	background-color: #FFFFFF;
+	padding-bottom: 15px;
+}
+.panel {
+	background-color: #FFFFFF;
+	height: 50px;
+	border-bottom: 1px #D4D4D4 solid;
+	align-content: center;
+	padding: 5% 5%;
+	margin-top: 3%;
+}
+.circle {
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	background-color: #FF5A4A;
+	float: left;
+	margin-top: 1.5%;
+	margin-right: 2.5%;	
+}

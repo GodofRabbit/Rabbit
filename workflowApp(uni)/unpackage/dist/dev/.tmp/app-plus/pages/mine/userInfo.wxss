@@ -1,0 +1,23 @@
+
+page {
+	background-color: #FFFFFF;
+}
+.info,.no-info {
+	width: 40%;
+	text-align: right;
+}
+.name,.info,.no-info {
+	display: inline-block;
+	font-size: 14px;
+}
+.name {
+	width: 60%;
+	color: #8b8b8b;
+	font-weight: bold;
+}
+.no-info {
+	font-size: 12px;
+	font-style: italic;
+	color: gray;
+}
+

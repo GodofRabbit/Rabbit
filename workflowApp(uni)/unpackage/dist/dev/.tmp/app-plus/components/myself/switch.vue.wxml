@@ -1,0 +1,1 @@
+<template name="ba3b3564"><view class="_view data-v-e6e49c2c"><view class="_view data-v-e6e49c2c mySwitch {{[checked ? 'open' : '']}}"><view class="_view data-v-e6e49c2c circle {{[checked ? 'openMove' : 'closeMove']}}"></view></view></view></template>

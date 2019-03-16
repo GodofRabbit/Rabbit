@@ -1,0 +1,115 @@
+
+.title.data-v-98bc9b1a {
+		position: absolute;
+		top: 5%;
+		left: 40%;
+		font-size: 18px;
+		color: #FFFFFF;
+		width: 100px;
+}
+.person-bg.data-v-98bc9b1a, .grace-list.data-v-98bc9b1a{
+		width: 100%;
+}
+.grace-list.data-v-98bc9b1a {
+		border-radius: 10px;
+}
+.person-bg.data-v-98bc9b1a {
+		height: 200px;
+}
+page.data-v-98bc9b1a{
+		height: auto;
+		min-height: 100%;
+}
+.logo.data-v-98bc9b1a {
+ 		width: 90%;
+		margin-left: 5%;
+ 		-webkit-box-sizing: border-box;
+ 		        box-sizing: border-box;
+ 		-webkit-box-orient: horizontal;
+ 		-webkit-box-direction: normal;
+ 		-webkit-flex-direction: row;
+ 		    -ms-flex-direction: row;
+ 		        flex-direction: row;
+ 		-webkit-box-align: center;
+ 		-webkit-align-items: center;
+ 		    -ms-flex-align: center;
+ 		        align-items: center;
+		position: absolute;
+		top: 18%;
+}
+.logo-img.data-v-98bc9b1a {
+ 		width: 150rpx;
+ 		height: 150rpx;
+ 		border-radius: 150rpx;
+}
+.logo-title.data-v-98bc9b1a {
+ 		height: 150rpx;
+ 		-webkit-box-flex: 1;
+ 		-webkit-flex: 1;
+ 		    -ms-flex: 1;
+ 		        flex: 1;
+ 		-webkit-box-align: center;
+ 		-webkit-align-items: center;
+ 		    -ms-flex-align: center;
+ 		        align-items: center;
+ 		-webkit-box-pack: justify;
+ 		-webkit-justify-content: space-between;
+ 		    -ms-flex-pack: justify;
+ 		        justify-content: space-between;
+ 		-webkit-box-orient: horizontal;
+ 		-webkit-box-direction: normal;
+ 		-webkit-flex-direction: row;
+ 		    -ms-flex-direction: row;
+ 		        flex-direction: row;
+ 		margin-left: 20rpx;
+}
+.uer-name.data-v-98bc9b1a {
+ 		height: 60rpx;
+ 		line-height: 60rpx;
+ 		font-size: 38rpx;
+ 		color: #FFFFFF;
+}
+.darg.data-v-98bc9b1a {
+		color: #FFFFFF;
+}
+.img-hover.data-v-98bc9b1a {
+		opacity: 0.8;
+}
+.exit-btn.data-v-98bc9b1a {
+		background-color: #FF5A4A; 
+		color: #FFFFFF;
+		border-radius: 30px;
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 35%;
+}
+.to-btn.data-v-98bc9b1a {
+		background-color: #33CC66;
+}
+.set.data-v-98bc9b1a {
+		position: absolute;
+		top: 21%;
+		left: 85%;
+		width: 60rpx;
+}
+.set image.data-v-98bc9b1a {
+		width: 60rpx;
+		height: 60rpx;
+}
+.version.data-v-98bc9b1a {
+		font-size: 22rpx;
+		color: gray;
+		width: 150rpx;
+		display: inline-block;
+		margin-top: 1%;
+}
+.uni-card.data-v-98bc9b1a {
+		width: 95%;
+		border-radius: 10px;
+		margin-left: 2.5%;
+}
+.drag.data-v-98bc9b1a {
+		font-size: 40rpx;
+		font-weight: bold;
+}
+

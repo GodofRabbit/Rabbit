@@ -1,0 +1,23 @@
+{
+  "navigationBarTitleText": "首页",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "",
+        "color": "#FF6354",
+        "fontSize": "14",
+        "float": "left",
+        "width": "auto"
+      },
+      {
+        "type": "none",
+        "colorPressed": "#FF5242",
+        "float": "right",
+        "fontSrc": "static/iconfont/iconfont-tongzhi.ttf",
+        "text": "",
+        "fontSize": "18px",
+        "badgeText": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,233 @@
+<template>
+	<view>
+		<uni-tabs @change="changeTab" :index="tabIndex">
+			<uni-tab-bar>
+				<view class="tab-bar-item" v-for="(tabBar, index) in tabBars" :key="index" :ref="tabBar.id + index">
+					<text class="tab-bar-title" :class="[tabIndex === index ? 'active' : '']">{{tabBar.name}}</text>
+				</view>
+			</uni-tab-bar>
+			<uni-tab-content>
+				<list class="list" v-for="(tabItem, tabIndex) in newsList" :key="tabIndex" @loadmore="loadMore(tabIndex)"
+				 loadmoreoffset="10">
+					<refresh class="refresh" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'">
+						<text class="refresh-text">{{refreshText}}</text>
+					</refresh>
+					<cell v-for="(newsItem, newsIndex) in tabItem.data" :key="newsIndex">
+						<list-temp :data="newsItem" :genre="tabIndex"></list-temp>
+					</cell>
+					<cell class="loadmore">
+						<text class="loadmore-text">{{tabItem.loadingText}}</text>
+					</cell>
+				</list>
+			</uni-tab-content>
+		</uni-tabs>
+	</view>
+</template>
+
+<script>
+	import uniTabContent from '@/components/base/uni-tab-content.nvue';
+	import uniTabBar from '@/components/base/uni-tab-bar.nvue';
+	import uniTabs from '@/components/base/uni-tabs.nvue';
+	import listTemp from '@/components/myself/listTemp.nvue';
+	import { friendlyDate } from '@/common/util.js';
+	import http from '@/http/index.js';
+
+	const dom = weex.requireModule('dom');
+	const globalEvent = weex.requireModule('globalEvent');
+	
+	export default {
+		components: {
+			uniTabContent,
+			uniTabBar,
+			uniTabs,
+			listTemp
+		},
+		data() {
+			return {
+				refreshing: false,
+				refreshText: '下拉可以刷新',
+				newsList: [], //信息列表
+				tabIndex: 0, //横滑tab下标
+				tabBars: [{
+					name: '待审批'
+				}, {
+					name: '已审批'
+				}]
+			}
+		},
+		created() {
+			//监听刷新(从详情页返回时)
+			globalEvent.addEventListener("plusMessage", e => {
+                if (e.data.refresh) { 
+                   this.onRefresh();
+                }
+            });
+			
+			let hasLogin = this.get_hasLogin();
+		},
+		methods: {
+			async get_hasLogin(){//同步函数
+				let hasLogin = await new Promise((resolve, reject) => {
+					uni.getStorage({
+						key:'hasLogin',
+						success:(res)=>{
+							resolve(res.data);
+						}
+					})
+				})
+				if(hasLogin=='yes'){
+					// 初始化列表信息
+					this.tabBars.forEach((tabBar,index) => {
+						this.newsList.push({
+							data: [],
+							id:index,
+							pageNo: 1,
+							loadingText: '加载中...'
+						});
+					});
+					this.getList();
+				}else {
+					this.tabBars.forEach((tabBar,index) => {
+						this.newsList.push({
+							data: [],
+							id:index,
+							pageNo: 1,
+							loadingText: '您还未登录'
+						});
+					});
+					uni.navigateTo({
+						url:'/pages/mine/login'
+					})
+				}
+			},
+			get_opNo(){
+				return new Promise((resolve, reject) => {
+					uni.getStorage({
+						key:'opNo',
+						success:(res)=>{
+							resolve(res.data);
+						}
+					})
+				})
+			},
+			async getList(action = 1) {
+				let opNo = await this.get_opNo();
+				let activeTab = this.newsList[this.tabIndex];
+				if(action===1){//针对刷新时将页数重置回1
+					activeTab.pageNo = 1;
+				}
+				http.sloveInfo({opNo,id:activeTab.id,pageNo:activeTab.pageNo}).then((res)=>{
+					this.refreshing = false;
+					if(res.data.flag){
+						let infoList = res.data.ipage;
+						if(action===1){
+							activeTab.data = infoList;
+						}else {
+							if(activeTab.data.length%15==0){
+								activeTab.data = activeTab.data.concat(infoList);
+							}
+						}
+						if(infoList.length<15){
+							activeTab.loadingText = '没有更多了';
+						}else {
+							activeTab.pageNo++;
+							activeTab.loadingText = '上拉加载更多';
+						}
+					}else {
+						uni.showToast({
+							title: '获取数据失败',
+							image: '../../static/images/common/data_error.png'
+						})
+					}
+				})
+				
+			},	
+			loadMore() {
+				this.getList(2);
+			},
+			async changeTab(event) {
+				this.tabIndex = event.index;
+				const activeNode = this.$refs[this.tabBars[event.index].id + event.index][0];
+				let nodeSize = await this.getNodeSize(activeNode);
+				if (nodeSize.left + nodeSize.width > 750) {
+					let index = event.index - 4;
+					let targetNode = this.$refs[this.tabBars[index].id + index][0];
+					dom.scrollToElement(targetNode, {});
+				} else if (nodeSize.left < 0) {
+					dom.scrollToElement(activeNode, {});
+				}
+				// 首次切换后加载数据
+				const activeTab = this.newsList[this.tabIndex];
+				if (activeTab.data.length === 0) {
+					this.getList();
+				}
+			},
+			getNodeSize(node) {
+				return new Promise((resolve, reject) => {
+					dom.getComponentRect(node, (result) => {
+						resolve(result.size);
+					});
+				});
+			},
+			async onRefresh(event) {
+				this.refreshText = '正在刷新...';
+				this.refreshing = true;
+				this.getList();
+			},
+			onPullingDown(event) {
+				if (this.refreshing) {
+					return;
+				}
+				if (Math.abs(event.pullingDistance) > Math.abs(event.viewHeight)) {
+					this.refreshText = "释放立即刷新";
+				} else {
+					this.refreshText = "下拉可以刷新";
+				}
+			}
+			
+		}
+	}
+</script>
+
+<style scoped>
+	.tab-bar-item {
+		width: 150px;
+		height: 100px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-right: 50%;
+	}
+	.tab-bar-title {
+		height: 100px;
+		line-height: 100px;
+		font-size: 30px;
+		color: #555;
+	}
+	.active {
+		color: #FF6345;
+	}
+	.loadmore {
+		height: 70px;
+		width: 750px;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.loadmore-text {
+		font-size: 30px;
+		text-align: center;
+		color: #999999;
+	}
+	.refresh {
+		width: 750px;
+		height: 70px;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.refresh-text {
+		text-align: center;
+		font-size: 28px;
+		color: #999999;
+	}
+</style>

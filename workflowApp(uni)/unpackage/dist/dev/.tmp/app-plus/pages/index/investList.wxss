@@ -1,0 +1,121 @@
+
+image.data-v-0dccd7b0 {
+	position: fixed;/*相对于手机屏幕布局*/
+	z-index: 99;/*叠层设置*/
+	/*设置内部加号居中*/
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	-webkit-box-pack:center;
+	-webkit-justify-content:center;
+	    -ms-flex-pack:center;
+	        justify-content:center;
+	/*宽高*/
+	width:45px;
+	height:45px;
+	/*位于屏幕的位置（可根据需求改）*/
+	bottom: 30px;
+	right:50rpx;
+}
+
+
+.hover-list {
+	opacity: 0.6;
+}
+.panel {
+  background: #fff;
+  margin-top: 8px;
+}
+.panel .panel-hd {
+  height: 45px;
+  border-bottom: 2px solid #F6F6F6;
+  position: relative;
+}
+.panel .panel-tit {
+  height: 43px;
+  line-height: 43px;
+  font-size: 16px;
+  padding-left: 14px;
+  position: relative;
+}
+.term {
+  font-size: 14px;
+  color: #999;
+  margin-right: 5px;
+  float: right;
+}
+.panel .panel-tit:before {
+  content: "";
+  float: left;
+  width: 2px;
+  height: 15px;
+  background: #21548D;
+  margin: 14px 10px 0 0;
+}
+.panel .panel-bd {
+  padding: 14px;
+}
+.product-star ._a {
+  color: #333;
+}
+.product-star .product-item {
+  border-bottom: 1px solid #E9E9E9;
+  padding: 10px 0;
+}
+.product-star .product-item:last-child {
+  border-bottom: none;
+}
+.product-star .product-name {
+  line-height: 20px;
+  overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.product-star .product-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.product-star .product-info ._li {
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+              -ms-flex: 1;
+                  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  position: relative;
+  margin-left: 9%;
+}
+.product-star .product-info ._li:not(:last-child):after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+  width: 1px;
+  height: 15px;
+  background: #e9e9e9;
+}
+.product-star .product-info-num {
+  color: #F66061;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+}
+.productName {
+	display: inline-block;
+	width: 67%;
+}
+

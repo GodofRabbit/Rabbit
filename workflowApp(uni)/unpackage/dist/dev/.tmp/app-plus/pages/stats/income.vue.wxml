@@ -1,0 +1,1 @@
+<template name="undefined"><view class="_view"><web-view src="/hybrid/html/income.html" class="_web-view"></web-view></view></template>

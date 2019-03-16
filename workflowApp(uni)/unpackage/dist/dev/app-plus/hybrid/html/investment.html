@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>投资分析报表</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/investment.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="mui-content">
+    		<div class="panel">
+    			<div class="circle"></div>
+				本年度投资类型占比
+			</div>
+			<div class="invest-occup">
+	    		<div id="invest"></div>
+	    		<ul class="detail">
+	    			<li>
+	    				<!--因为确定是自营与委托两种，固这里颜色可以不动态获取，直接在最上层写死-->
+	    				<div class="circle_bot" style="box-shadow: 0 0 0 3px #41daea;"></div>
+	    				自营:
+	    				<span id="ziying"></span>
+	    			</li>
+	    			<li>
+	    				<div class="circle_bot" style="box-shadow: 0 0 0 3px #3E98C5;"></div>
+	    				委托:
+	    				<span id="weituo"></span>
+	    			</li>
+	    		</ul>
+    		</div>
+    		<div class="panel">
+    			<div class="circle"></div>
+				各年度总投资额
+			</div>
+			<div id="investyear" class="invest-div"></div>
+			<div class="panel">
+    			<div class="circle"></div>
+				产品各年度总投资额
+			</div>
+			<div id="investpro" class="invest-div"></div>
+		</div>
+		
+		<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/echarts.js"></script>
+		<script src="js/investment.js"></script>
+	</body>
+
+</html>

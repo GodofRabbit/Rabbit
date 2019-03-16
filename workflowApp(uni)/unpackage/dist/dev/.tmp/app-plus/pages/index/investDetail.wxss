@@ -1,0 +1,22 @@
+
+page {
+	background-color: #FFFFFF;
+}
+.name,.info {
+	display: inline-block;
+}
+.name {
+	width: 60%;
+	color: #8b8b8b;
+	font-size: 14px;
+	font-weight: bold;
+}
+.info{
+	width: 40%;
+	font-size: 14px;
+	text-align: right;
+}
+.info-warp {
+	text-indent: 2em;
+}
+

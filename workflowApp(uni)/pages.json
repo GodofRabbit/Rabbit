@@ -1,0 +1,186 @@
+{
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            "path" : "pages/index/index",
+            "style" : {
+                "navigationBarTitleText" : "首页",
+                "app-plus" : {
+                    "titleNView" : {
+                        "buttons" : [
+							{
+							    "text": "", 
+								"color" : "#FF6354",
+							    "fontSize": "14",
+								"float": "left",
+								"width" : "auto"
+							},
+                            {
+                                "type" : "none",
+                                "colorPressed" : "#FF5242",
+                                "float" : "right",
+                                "fontSrc" : "static/iconfont/iconfont-tongzhi.ttf",
+                                "text" : "\ue6d6",
+                                "fontSize" : "18px",
+								"badgeText": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "path" : "pages/process/approvalIndex",
+            "style" : {
+                "navigationBarTitleText" : "业务审批"
+            }
+        },
+        {
+            "path" : "pages/stats/stats",
+            "style" : {
+                "navigationBarTitleText" : "统计分析"
+            }
+        },
+        {
+            "path" : "pages/mine/personCenter",
+            "style" : {
+                "navigationBarTitleText" : "个人中心",
+                "app-plus" : {
+                    "titleNView" : {
+                        "type" : "transparent"
+                    }
+                }
+            }
+        },
+        {
+            "path" : "pages/mine/login",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "app-plus" : {
+                    "titleNView" : {
+                        "type" : "transparent"
+                    }
+                }
+            }
+        },
+        {
+            "path" : "pages/stats/income",
+            "style" : {
+                "navigationBarTitleText" : "预期收益统计"
+            }
+        },
+        {
+            "path" : "pages/stats/incomeAnalysis",
+            "style" : {
+                "navigationBarTitleText" : "投资分布统计"
+            }
+        },
+        {
+            "path" : "pages/stats/investment",
+            "style" : {
+                "navigationBarTitleText" : "投资分析报表"
+            }
+        },
+        {
+            "path" : "pages/stats/maturityIncome",
+            "style" : {
+                "navigationBarTitleText" : "到期收益统计"
+            }
+        },
+        {
+            "path" : "pages/error/error",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "navigationBarBackgroundColor" : "#efeff4"
+            }
+        },
+        {
+            "path" : "pages/error/errordesc",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "navigationBarBackgroundColor" : "#efeff4"
+            }
+        },
+        {
+            "path" : "pages/index/investList",
+            "style" : {
+                "navigationBarTitleText" : "投资概况"
+            }
+        },
+        {
+            "path" : "pages/index/investDetail",
+            "style" : {
+                "navigationBarTitleText" : "详细信息"
+            }
+        },
+        {
+            "path" : "pages/mine/userInfo",
+            "style" : {
+				"navigationBarTitleText" : "个人资料"
+			}
+        },
+		{
+		    "path" : "pages/mine/passwordChange",
+		    "style" : {
+				"navigationBarTitleText" : "密码修改"
+			}
+		},
+		{
+		    "path" : "pages/mine/setting",
+		    "style" : {
+				"navigationBarTitleText" : "设置"
+			}
+		},
+		{
+		    "path" : "pages/process/approvalDetail",
+		    "style" : {
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+		    "path" : "pages/index/infoList",
+		    "style" : {
+				"navigationBarTitleText" : "我的消息",
+				 "enablePullDownRefresh" : true
+			}
+		}
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "uni-app",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8"
+    },
+    "tabBar" : {
+        "color" : "#7A7E83",
+        "selectedColor" : "#FF5242",
+        "borderStyle" : "black",
+        "backgroundColor" : "#ffffff",
+        "list" : [
+            {
+                "pagePath" : "pages/index/index",
+                "iconPath" : "static/images/tabbar/icon_home.png",
+                "selectedIconPath" : "static/images/tabbar/icon_home_red.png",
+                "text" : "首页"
+            },
+            {
+                "pagePath" : "pages/process/approvalIndex",
+                "iconPath" : "static/images/tabbar/iocn_statistics.png",
+                "selectedIconPath" : "static/images/tabbar/iocn_statistics_red.png",
+                "text" : "审批"
+            },
+            {
+                "pagePath" : "pages/stats/stats",
+                "iconPath" : "static/images/tabbar/icon_approve.png",
+                "selectedIconPath" : "static/images/tabbar/icon_approve_red.png",
+                "text" : "统计"
+            },
+            {
+                "pagePath" : "pages/mine/personCenter",
+                "iconPath" : "static/images/tabbar/icon_mine.png",
+                "selectedIconPath" : "static/images/tabbar/icon_mine_red.png",
+                "text" : "我的"
+            }
+        ]
+    }
+}

@@ -1,0 +1,346 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 点击效果 */
+.tap-hover.data-v-332a6bc2 {
+	opacity: 0.6;
+}
+/* 轮播图 */
+.swiper-item image.data-v-332a6bc2,swiper.data-v-332a6bc2 {
+	width: 100%;
+	height: 400rpx;
+}
+/* 总投资额,投资收益 */
+.menu-list.data-v-332a6bc2 {
+	position: absolute;
+	z-index: 2;
+	width: 95%;
+	margin-left: 2.5%;
+	margin-top: -8%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	background: #fff;
+	border-radius: 5px;
+}
+.menu-list ._li.data-v-332a6bc2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+	list-style: none;
+}
+.list-name.data-v-332a6bc2 {
+	text-align: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 90px;
+    width: 100%;
+}
+.menu-list ._li.data-v-332a6bc2:first-child:after{
+	content: '';
+    height: 40px;
+    width:1px;
+    background: darkgray;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+}
+.money.data-v-332a6bc2{
+	color: #FF5B4B;
+	font-size: 30px;
+	margin-bottom: -30rpx;
+	font-weight: bold;
+}
+.behalf.data-v-332a6bc2{
+	color:gray;
+	font-size: 15px;
+}
+/* 滚动公告 */
+.uni-swiper-msg.data-v-332a6bc2 {
+	margin-top: 18%;
+	height: 60rpx;
+	background-color: #FFFFFF;
+	padding-left: 30rpx;
+	padding-top: 20rpx;
+}
+.uni-swiper-msg image.data-v-332a6bc2 {
+	border-radius: 3px;
+}
+/* 投资概况 */
+.circle.data-v-332a6bc2 {
+	width: 15rpx;
+	height: 15rpx;
+	background-color: orangered;
+	border-radius: 50%;
+	position: relative;
+	right: 12rpx;
+	top: 27rpx;
+}
+.panel.data-v-332a6bc2 {
+  height: 40px;
+  background: #FFFFFF;
+  margin-top: 1.5%;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 50rpx;
+  padding-top: 30rpx;
+}
+.total.data-v-332a6bc2 {
+	color: red;
+	width: 80rpx;
+	margin:auto 40rpx auto 20rpx;
+}
+.bum.data-v-332a6bc2 {
+	color: red;
+	margin-left: 20rpx;
+}
+.uni-media-list-text-top.data-v-332a6bc2 {
+	font-size: 16px;
+}
+.uni-media-list-text-bottom.data-v-332a6bc2 {
+	font-size: 13px;
+}
+.drag.data-v-332a6bc2 {
+	font-size: 40rpx;
+	font-weight: bold;
+}
+

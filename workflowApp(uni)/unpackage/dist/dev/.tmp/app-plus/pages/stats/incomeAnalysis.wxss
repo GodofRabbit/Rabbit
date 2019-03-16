@@ -1,0 +1,121 @@
+
+.ec-canvas.data-v-6733752f {
+  width: 100%;
+  height: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+
+.canvasView1.data-v-cd847f10 {
+	width: 100%;
+	height: 150rpx;
+	padding-top: 40rpx;
+	padding-bottom: 40rpx;
+	background-color: #FFFFFF;
+}
+.canvasView2.data-v-cd847f10 {
+	width: 150rpx;
+	height: 180rpx;
+	margin-left: 2%;
+}
+.panel.data-v-cd847f10 {
+	background-color: #2F4056;
+	color: #FFFFFF;
+	height: 45rpx;
+	border-bottom: 1px #D4D4D4 solid;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	padding: 3% 3%;
+	font-size: 16px;
+}
+.circle.data-v-cd847f10 {
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	background-color: #FF5A4A;
+	float: left;
+	margin-top: 1.5%;
+	margin-right: 2.5%;
+}
+.unit.data-v-cd847f10 {
+	font-size: 14px;
+	color: gray;
+	margin-left: 5%;
+}
+.title.data-v-cd847f10 {
+	display: inline-block;
+	margin-top: -1%;
+}
+.detail.data-v-cd847f10 {
+	background-color: #FFFFFF;
+	padding-bottom: 20rpx;
+}
+.square.data-v-cd847f10 {
+	height: 10px;
+	width: 10px;
+	float: left;
+	margin:2% 3% auto 6%;
+}
+.type.data-v-cd847f10 {
+	width: 40%;
+}
+.putTotleMoney.data-v-cd847f10 {
+	width: 25%;
+}
+.account.data-v-cd847f10 {
+	width: 20%;
+	color: #FF6354;
+}
+.name.data-v-cd847f10,.info.data-v-cd847f10 {
+	display: inline-block;
+	font-size: 13px;
+	width: 50%;
+}
+.name.data-v-cd847f10 {
+	color: #009688;
+	text-align: left;
+}
+.info.data-v-cd847f10{
+	color: #000000;
+	text-align: right;
+}
+.deadline.data-v-cd847f10 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-align-content: center;
+	    -ms-flex-line-pack: center;
+	        align-content: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	background-color: #FFFFFF;
+	margin-top: 0%;
+	padding-top: 2%;
+	padding-bottom: 3%;
+}
+.deadline ._li ._span.data-v-cd847f10{
+	margin-left: 20%;
+}
+.datelong.data-v-cd847f10 {
+	color: gray;
+}
+

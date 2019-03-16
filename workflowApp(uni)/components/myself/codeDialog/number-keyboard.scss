@@ -1,0 +1,70 @@
+#number-keyboard-component {
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	bottom: 0;
+	background-color: #FFFFFF;
+	.title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 60upx;
+		background: #eeeeee;
+	}
+	.keys {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.key {
+			width: 250upx;
+			height: 100upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-right: 1px solid #eeeeee;
+			box-sizing: border-box;
+			font-size: 40upx;
+			
+		}
+		.key:nth-child(n + 4) {
+			border-top: 1px solid #eeeeee;
+			box-sizing: border-box;
+		}
+	}
+
+}
+.key-hover {
+	background: #D2D2D2;
+}
+.else {
+	background: #eeeeee;
+}
+.else-hover {
+	background: #FFFFFF;
+}
+/*动画*/
+.slidedown {
+	animation: slidedown 0.3s linear;
+	transform: translateY(100%);
+}
+.slideup {
+	animation: slideup 0.3s linear;
+	transform: translateY(0);
+}
+@keyframes slidedown {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+@keyframes slideup {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}

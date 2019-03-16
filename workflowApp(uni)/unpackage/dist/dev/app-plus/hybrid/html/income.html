@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>预期收益统计</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/income.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="mui-content" v-cloak>
+			<ul class="dateSelect">
+				<li @click="incomeDay"><a class="select-active">日</a></li>
+				<li @click="incomeMonth"><a>月</a></li>
+				<li @click="incomeYear"><a>年</a></li>
+			</ul>
+			<div id="main"></div>
+			<ul class="detail"><!--颜色定义了14种，对14取余，以便于种类超出14种时，进行循环-->
+				<li v-for="(earn,index) in earns" v-if="earnType=='day'">
+					<div class="circle_bot" :style="colorArray[index%14]"></div>
+					{{ earn.PRODUCT_TYPE }}
+					<div class="account">{{ earn.INCOMEDAY }}万</div>
+				</li>
+				<li v-for="(earn,index) in earns" v-if="earnType=='month'">
+					<div class="circle_bot" :style="colorArray[index%14]"></div>
+					{{ earn.PRODUCT_TYPE }}
+					<div class="account">{{ earn.INCOMEMONTH }}万</div>
+				</li>
+				<li v-for="(earn,index) in earns" v-if="earnType=='year'">
+					<div class="circle_bot" :style="colorArray[index%14]"></div>
+					{{ earn.PRODUCT_TYPE }}
+					<div class="account">{{ earn.INCOMEYEAR }}万</div>
+				</li>
+			</ul>
+			<!--预期收益走势-->
+			<div class="panel">
+				<div class="circle"></div>
+				预期收益走势   
+				<span class="unit">单位:万元</span>
+			</div>
+			<div id="trend"></div>
+			
+			
+			
+			<div class="bottom-word">截至报告日累计收益/预计到期收益</div>
+		</div>
+		
+		
+		
+		<script type="text/javascript" src="https://js.cdn.aliyun.dcloud.net.cn/dev/uni-app/uni.webview.0.1.52.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/vue.min.js"></script>
+		<script src="js/echarts.js"></script>
+		<script src="js/income.js"></script>
+	</body>
+</html>

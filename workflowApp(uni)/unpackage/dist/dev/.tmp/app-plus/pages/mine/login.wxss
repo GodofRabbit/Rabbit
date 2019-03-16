@@ -1,0 +1,55 @@
+
+page.data-v-95186c60,view.data-v-95186c60 {
+	min-height: 100%;
+	background-color: #FFFFFF;
+}
+.logo.data-v-95186c60 {
+	width: 25%;
+	height: 150px;
+	margin: 30% auto auto 38%;
+}
+.log-phone.data-v-95186c60 {
+	width: 25px;
+	height: 30px;
+}
+.log-lock.data-v-95186c60 {
+	width: 25px;
+	height: 25px;
+}
+.log-back.data-v-95186c60 {
+	width: 50px;
+	height: 40px;
+}
+.grace-form .grace-items ._input.data-v-95186c60 {
+	text-align: left;
+	margin-left: 0px;
+}
+.grace-form .grace-items .grace-label.data-v-95186c60 {
+	width: 35px;
+}
+.grace-form .grace-items.data-v-95186c60 {
+	width: 80%;
+	margin-left: 10%;
+}
+.login-btn.data-v-95186c60 {
+	background-color: #FF5A4A; 
+	color: #fff;
+	border-radius: 30px;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 12%;
+}
+switch.data-v-95186c60 {
+	float: right;
+}
+.auto-tip.data-v-95186c60 {
+	display: inline-block;
+	font-size: 18px;
+	color: #DDDDDD;
+	margin-left: 45%;
+	margin-top: 4%;
+}
+.btn-hover.data-v-95186c60 {
+	opacity: 0.8;
+}
+
