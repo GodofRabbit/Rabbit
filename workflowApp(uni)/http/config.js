@@ -1,7 +1,7 @@
 //  http 请求配置项
 export default {
     //	开发者服务器接口地址
-    url: "http://192.168.101.180:8080/fund/",
+    url: "http://localhost:8080/fund/",
     //	请求的参数	
     data: {},
     //	设置请求的 header，header 中不能设置 Referer。
